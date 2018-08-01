@@ -24,10 +24,26 @@
   }
 </script>
 
-<style>
+<style lang='less'>
+
+  @import '~normalize.css';
+  @import './assets/style/variables.less';
+
+  html,
+  body {
+    .full-height;
+  }
+  
   #app {
+    .full-height;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding: 3%;
+    box-sizing: border-box;
+    background-image: url('/imgs/stanislas.jpg');
+    background-repeat:no-repeat center fixed;
+      background-size: cover;
+     
   }
 </style>

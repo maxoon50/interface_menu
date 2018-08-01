@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="sub-menu">
   sous menu
     </div>
 </template>
@@ -25,5 +25,8 @@
 </script>
 
 <style scoped>
-
+ #sub-menu{
+     height: 10%;
+     border: 1px solid grey;
+ }
 </style>
