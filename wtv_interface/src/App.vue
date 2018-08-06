@@ -39,7 +39,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: 3%;
+    padding: 2%;
     box-sizing: border-box;
     background-image: url('/imgs/stanislas.jpg');
     background-repeat:no-repeat center fixed;

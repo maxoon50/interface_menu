@@ -3,17 +3,19 @@
         <div id="logo">
             <img src="/imgs/wiztivi.png" alt="wiztivi logo">
         </div>
-        <div id="user"></div>
+        <User/>
         <Time/>
     </header>
 </template>
 
 <script>
     import Time from './Time';
+    import User from './User';
     
     export default {
         components: {
-            Time
+            Time,
+            User
         },
         data: function() {
             return {
@@ -31,14 +33,16 @@
     @import '../../assets/style/variables.less';
     header {
         .flex-row;
-        height: 15%;
+        height: 10%;
     }
     #user{
         flex-grow: 1;
     }
     #logo{
+        .flex-row;
+        .align-center;
         img{
-            height: 70%;
+            height: 100%;
         }
     }
 </style>
