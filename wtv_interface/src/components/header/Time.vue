@@ -19,6 +19,7 @@
                 let date = new Date();
                 let hours = date.getHours();
                 let minutes = date.getMinutes();
+                minutes = minutes < 10 ? "0"+ minutes : minutes;
                 let day = date.getDate()
                 let month = MONTHS[date.getMonth() - 1];
                 this.date = day + " " + month;
