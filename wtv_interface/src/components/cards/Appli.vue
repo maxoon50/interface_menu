@@ -11,7 +11,7 @@ export default {};
 .backAppli {
   //border : solid 5px black;
   height: 25%;
-  width: 50%;
+  width: 70%;
   margin: 10% 10% 0% 10%;
   background: url("/imgs/reca.jpg");
   background-repeat: no-repeat center fixed;

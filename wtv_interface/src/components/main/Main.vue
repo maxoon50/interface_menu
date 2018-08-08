@@ -41,7 +41,7 @@
     
     .contents {
         .full-height;
-        width: 21%;
+        width: 250px;
         box-sizing: border-box;
         border: 1px solid grey;
     }

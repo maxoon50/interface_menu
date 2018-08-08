@@ -32,7 +32,7 @@ import Appli from '../cards/Appli';
    .cont-chan {
        display:flex;
        flex-direction: column;
-       align-content: center;
+       align-items:center;
        height : 100%;
    }
 </style>
