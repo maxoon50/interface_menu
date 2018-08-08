@@ -1,17 +1,19 @@
 <template>
-    <div id="cont-chan">
+    <div class="cont-chan">
   <Channel/>
-  <Channel/>
-  <Channel/>
+ <Appli/>
+ <Channel/>
 </div>
 </template>
 
 <script>
 import Channel from '../cards/Channel';
+import Appli from '../cards/Appli';
 
     export default {
         components: {
-           Channel
+           Channel,
+           Appli
         },
 
         data: function() {
@@ -27,7 +29,10 @@ import Channel from '../cards/Channel';
 </script>
 
 <style scoped>
-   #cont-chan {
+   .cont-chan {
+       display:flex;
+       flex-direction: column;
+       align-content: center;
        height : 100%;
    }
 </style>

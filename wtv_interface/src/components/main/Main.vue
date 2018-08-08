@@ -1,24 +1,13 @@
 <template>
     <main id="main">
-        <div class="contents">
-            <Contents ref="channels" :categorie="'channels'" />
-        </div>
-        <div class="contents">
-            <Contents ref="contents" :categorie="'contents'" />
-        </div>
-        <div class="contents">
-            <Contents ref="apps" :categorie="'apps'" />
-        </div>
-        <div class="contents">
-            <Contents ref="films" :categorie="'films'" />
-        </div>
-        <div class="contents">
-            <Contents ref="extras" :categorie="'extras'" />
-        </div>
-    
+            <Contents class="contents" ref="channels" :categorie="'channels'" />
+            <Contents class="contents" ref="contents" :categorie="'contents'" />      
+            <Contents class="contApp" ref="apps" :categorie="'apps'" />    
+            <Contents class="contents" ref="films" :categorie="'films'" />      
+            <Contents class="contents" ref="extras" :categorie="'extras'" />
     </main>
 </template>
-
+ 
 <script>
     import Contents from './Contents';
     
@@ -45,14 +34,21 @@
     @import '~normalize.css';
     @import '../../assets/style/variables.less';
     #main {
-        height: 65%;
+        height: 70%;
         border: 1px solid grey;
         .flex-row;
     }
     
     .contents {
         .full-height;
-        width: 20%;
+        width: 21%;
+        box-sizing: border-box;
+        border: 1px solid grey;
+    }
+
+     .contApp {
+        .full-height;
+        width: 16%;
         box-sizing: border-box;
         border: 1px solid grey;
     }

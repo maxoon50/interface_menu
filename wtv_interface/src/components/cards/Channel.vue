@@ -1,5 +1,5 @@
 <template>
-    <div class="global">
+    <div class="globalChan">
         <div class="view">
         </div>
         <div class="sub">
@@ -13,11 +13,11 @@ export default {};
 </script>
 
 <style lang="less">
-.global {
+.globalChan {
   //border : solid 5px black;
-  height: 25%;
+  height: 29%;
   width: 80%;
-  margin: 10% 10% 0% 10%;
+  margin: 8% 10% 0% 10%;
 }
 .view {
   background: url("/imgs/stanislas.jpg");
