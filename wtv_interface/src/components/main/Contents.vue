@@ -1,8 +1,7 @@
 <template>
     <div class="cont-chan">
-  <Channel/>
- <Appli/>
- <Channel/>
+        <component  v-for="elt in listeElements" v-bind:is="categorie"></component>
+
 </div>
 </template>
 
@@ -15,10 +14,10 @@ import Appli from '../cards/Appli';
            Channel,
            Appli
         },
-
+        props:['categorie'],
         data: function() {
             return {
-        
+                listeElements : 3
             }
         },
         methods: {

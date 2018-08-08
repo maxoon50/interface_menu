@@ -1,10 +1,10 @@
 <template>
     <main id="main">
-            <Contents class="contents" ref="channels" :categorie="'channels'" />
-            <Contents class="contents" ref="contents" :categorie="'contents'" />      
-            <Contents class="contApp" ref="apps" :categorie="'apps'" />    
-            <Contents class="contents" ref="films" :categorie="'films'" />      
-            <Contents class="contents" ref="extras" :categorie="'extras'" />
+            <Contents class="contents" ref="channels" :categorie="'channel'" />
+            <Contents class="contents" ref="contents" :categorie="'channel'" />      
+            <Contents class="contApp" ref="apps" :categorie="'appli'" />    
+            <Contents class="contents" ref="films" :categorie="'channel'" />      
+            <Contents class="contents" ref="extras" :categorie="'channel'" />
     </main>
 </template>
  
