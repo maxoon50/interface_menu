@@ -1,6 +1,6 @@
 <template>
     <div class="cont-chan">
-        <component  v-for="elt in listeElements" v-bind:is="categorie"></component>
+        <component  v-for="elt in data" v-bind:is="categorie" :content="elt"></component>
 
 </div>
 </template>
@@ -8,16 +8,19 @@
 <script>
 import Channel from '../cards/Channel';
 import Appli from '../cards/Appli';
+import Movie from '../cards/Movie';
 
     export default {
         components: {
            Channel,
-           Appli
+           Appli,
+           Movie
         },
-        props:['categorie'],
+        props:['categorie', 'data'],
         data: function() {
             return {
-                listeElements : 3
+                listeElements : 3,
+
             }
         },
         methods: {

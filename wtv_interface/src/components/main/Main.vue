@@ -1,18 +1,37 @@
 <template>
     <main id="main">
             <Modal/>
-            <Contents class="contents" ref="channels" :categorie="'channel'" />
-            <Contents class="contents" ref="contents" :categorie="'channel'" />      
-            <Contents class="contApp" ref="apps" :categorie="'appli'" />    
-            <Contents class="contents" ref="films" :categorie="'channel'" />      
-            <Contents class="contents" ref="extras" :categorie="'channel'" />
+        <!-- ici on envoie:
+         => la catégorie pour créer les éléments 'Contents' en dynamique,
+         => les datas en provenance des states
+        -->
+            <Contents class="contents"
+                      ref="channels"
+                      :categorie="'channel'"
+                      :data="myChannelState.channels" />
+            <Contents class="contents"
+                      ref="contents"
+                      :categorie="'channel'"
+                      :data="myContentState.contents"/>
+            <Contents class="contApp"
+                      ref="apps"
+                      :categorie="'appli'" />
+            <Contents class="contents"
+                      ref="films"
+                      :categorie="'movie'"
+                      :data="myFilmState.films"/>
+            <Contents class="contents"
+                      ref="extras"
+                      :categorie="'channel'" />
     </main>
 </template>
- 
+
 <script>
     import Contents from './Contents';
     import Modal from '../modal/Modal';
-    
+    import { myChannelState } from '../../states/myChannelState';
+    import { myContentState } from '../../states/myContentState';
+    import { myFilmState } from '../../states/myFilmState';
     export default {
     
         components: {
@@ -22,7 +41,9 @@
         data: function() {
             return {
                 componentList: ['channels', 'contents', 'apps', 'films', 'extras'],
-    
+                myChannelState,
+                myContentState,
+                myFilmState
             }
         },
         methods: {
