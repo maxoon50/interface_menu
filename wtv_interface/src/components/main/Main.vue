@@ -1,5 +1,6 @@
 <template>
     <main id="main">
+            <Modal/>
             <Contents class="contents" ref="channels" :categorie="'channel'" />
             <Contents class="contents" ref="contents" :categorie="'channel'" />      
             <Contents class="contApp" ref="apps" :categorie="'appli'" />    
@@ -10,12 +11,13 @@
  
 <script>
     import Contents from './Contents';
-    
+    import Modal from '../modal/Modal';
     
     export default {
     
         components: {
-            Contents
+            Contents,
+            Modal
         },
         data: function() {
             return {
@@ -34,6 +36,7 @@
     @import '~normalize.css';
     @import '../../assets/style/variables.less';
     #main {
+        position: relative;
         height: 70%;
         border: 1px solid grey;
         .flex-row;
