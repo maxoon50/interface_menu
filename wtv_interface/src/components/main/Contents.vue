@@ -19,11 +19,14 @@ import Movie from '../cards/Movie';
         props:['categorie', 'data'],
         data: function() {
             return {
-                listeElements : 3,
+         
 
             }
         },
         methods: {
+
+        },
+        created() {
 
         },
   

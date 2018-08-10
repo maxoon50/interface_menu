@@ -11,6 +11,48 @@ export const myContentState =new Vue({
                 'title': 'Julie Lescaut',
                 'img': 'julieLescaut.jpg',
             },
+            {
+                'title': 'Hercule',
+                'img': 'hercule.jpg',
+            },
+            // {
+            //     'title': 'Julie Lescaut',
+            //     'img': 'julieLescaut.jpg',
+            // },
+
+            // {
+            //     'title': 'Hercule',
+            //     'img': 'hercule.jpg',
+            // },
+            // {
+            //     'title': 'Julie Lescaut',
+            //     'img': 'julieLescaut.jpg',
+            // },
+            // {
+            //     'title': 'toto',
+            //     'img': 'hercule.jpg',
+            // },
+            // {
+            //     'title': 'Julie Lescaut',
+            //     'img': 'julieLescaut.jpg',
+            // },
+
+            // {
+            //     'title': 'Hercule',
+            //     'img': 'hercule.jpg',
+            // },
+            // {
+            //     'title': 'Julie Lescaut',
+            //     'img': 'julieLescaut.jpg',
+            // },
+            // {
+            //     'title': 'Hercule',
+            //     'img': 'hercule.jpg',
+            // },
+            // {
+            //     'title': 'Julie Lescaut',
+            //     'img': 'julieLescaut.jpg',
+            // },
 
         ]
     },
