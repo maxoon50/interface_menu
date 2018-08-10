@@ -65,7 +65,7 @@
     
     .contents {
         .full-height;
-        width: 250px;
+        width: 23%;
         box-sizing: border-box;
         border: 1px solid grey;
     }

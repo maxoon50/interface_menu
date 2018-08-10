@@ -4,8 +4,8 @@ export const myFilmState =new Vue({
         films:[
 
             {
-                'title': 'Reservoir dog',
-                'img': 'reservoirdog.jpeg',
+                'title': 'Daredevil',
+                'img': 'daredevil.jpg',
             },
 
         ]

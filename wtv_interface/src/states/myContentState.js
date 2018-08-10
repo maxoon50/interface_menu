@@ -5,11 +5,11 @@ export const myContentState =new Vue({
 
             {
                 'title': 'Hercule',
-                'img': 'film1.png',
+                'img': 'hercule.jpg',
             },
             {
                 'title': 'Julie Lescaut',
-                'img': 'film2.jpeg',
+                'img': 'julieLescaut.jpg',
             },
 
         ]

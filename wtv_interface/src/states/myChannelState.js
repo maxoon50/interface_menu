@@ -5,7 +5,7 @@ export const myChannelState =new Vue({
 
             {
                 'title': 'M6',
-                'img': 'logoM6.jpg',
+                'img': 'logom6.png',
             },
             {
                 'title': 'France 2',
@@ -13,7 +13,7 @@ export const myChannelState =new Vue({
             },
             {
                 'title': 'Arte',
-                'img': 'arte.jpeg',
+                'img': 'logow9.png',
             },
         ]
     },
