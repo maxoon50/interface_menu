@@ -1,5 +1,5 @@
 <template>
-    <main id="main">
+    <main id="main"  :class="{focus: focused}">
             <Modal/>
         <!-- ici on envoie:
          => la catégorie pour créer les éléments 'Contents' en dynamique,
@@ -32,12 +32,14 @@
     import { myChannelState } from '../../states/myChannelState';
     import { myContentState } from '../../states/myContentState';
     import { myFilmState } from '../../states/myFilmState';
+    import { mixinEltWithoutChild } from '../../mixins/mixinEltWithoutChild';
     export default {
     
         components: {
             Contents,
             Modal
         },
+        mixins: [ mixinEltWithoutChild ],
         data: function() {
             return {
                 componentList: ['channels', 'contents', 'apps', 'films', 'extras'],

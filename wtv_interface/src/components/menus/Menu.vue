@@ -1,17 +1,17 @@
 <template>
-    <div id="main-menu">
+    <div id="main-menu" :class="{focus: focused}">
   menu
     </div>
 </template>
 
 <script>
-
+    import { mixinEltWithoutChild } from '../../mixins/mixinEltWithoutChild';
 
     export default {
         components: {
      
         },
-
+        mixins: [ mixinEltWithoutChild ],
         data: function() {
             return {
         
