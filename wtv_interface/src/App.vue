@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-    <app-menu></app-menu>
-    <app-sous-menu></app-sous-menu>
-    <app-main></app-main>
+      <template v-for="child in componentList">
+          <component :is="child" :key="child" ref="contents"></component>
+      </template>
   </div>
 </template>
 
@@ -12,15 +11,22 @@
   import Menu from './components/menus/Menu.vue';
   import SousMenu from './components/menus/SousMenu.vue';
   import Main from './components/main/Main.vue';
+  import { mixinEletWithChild } from './mixins/mixinEletWithChild';
   
   export default {
     name: 'app',
+    mixins: [ mixinEletWithChild ],
     components: {
       'app-header': Header,
       'app-menu': Menu,
       'app-sous-menu': SousMenu,
       'app-main': Main
-    }
+    },
+      data:function(){
+        return {
+            componentList: ['app-header', 'app-menu', 'app-sous-menu', 'app-main'],
+        }
+      }
   }
 </script>
 
