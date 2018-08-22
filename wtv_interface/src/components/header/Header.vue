@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="{focus: focused}">
         <div id="logo">
             <img src="/imgs/wiztivi.png" alt="wiztivi logo">
         </div>
@@ -11,12 +11,14 @@
 <script>
     import Time from './Time';
     import User from './User';
+    import { mixinEltWithoutChild } from '../../mixins/mixinEltWithoutChild';
     
     export default {
         components: {
             Time,
             User
         },
+        mixins: [ mixinEltWithoutChild ],
         data: function() {
             return {
     

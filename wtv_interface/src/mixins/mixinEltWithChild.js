@@ -1,6 +1,6 @@
 
 
-export const mixinEletWithChild = {
+export const mixinEltWithChild = {
     data: function() {
         return {
             focused: false,

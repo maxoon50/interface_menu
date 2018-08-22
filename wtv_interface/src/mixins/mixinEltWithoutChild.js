@@ -1,5 +1,5 @@
 
-export const mixinEletWithoutChild = {
+export const mixinEltWithoutChild = {
     data: function () {
         return {
             focused: false
@@ -14,4 +14,3 @@ export const mixinEletWithoutChild = {
         }
     }
 }
-export default mixinEletWithoutChild;
