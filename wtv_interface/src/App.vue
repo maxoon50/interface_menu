@@ -86,4 +86,10 @@
     .focus{
         background-color: lime;
     }
+    .focusborder{
+        -moz-box-shadow: 0 0 10px lime;
+        -webkit-box-shadow: 0 0 10px lime;
+        box-shadow: 0 0 10px lime;
+        transition: all 0.3s;
+    }
 </style>

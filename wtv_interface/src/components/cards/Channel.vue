@@ -1,5 +1,5 @@
 <template>
-    <div class="globalChan">
+    <div class="globalChan" :class="{focusborder: focused}">
         <div class="view" :style="style">
         </div>
         <div class="sub color-bg-sub">
@@ -9,8 +9,11 @@
 </template>
 
 <script>
+    import { mixinEltWithoutChild } from "../../mixins/mixinEltWithoutChild";
+
     export default {
         props: ['content'],
+        mixins: [ mixinEltWithoutChild ],
         created() {
 
         },

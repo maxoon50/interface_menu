@@ -1,5 +1,5 @@
 <template>
-    <main id="main" :class="{focus: focused}">
+    <main id="main">
         <!-- ici on envoie:
          => la catégorie pour créer les éléments 'Contents' en dynamique,
          => les datas en provenance des states
@@ -10,7 +10,7 @@
                        :key="index"
                        :categorie="child.type"
                        :data="child.dataSource"
-                       ref="'contents'">
+                       ref="contents">
             </component>
         </template>
     </main>
@@ -22,7 +22,8 @@
     import {myChannelState} from '../../states/myChannelState';
     import {myContentState} from '../../states/myContentState';
     import {myFilmState} from '../../states/myFilmState';
-    import {mixinEltWithoutChild} from '../../mixins/mixinEltWithoutChild';
+    import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
+    import { EventBus } from "../../main";
 
     export default {
 
@@ -30,7 +31,7 @@
             Contents,
             Modal
         },
-        mixins: [mixinEltWithoutChild],
+        mixins: [mixinEltWithChild],
         data: function () {
             return {
                 contentTypes: [
@@ -57,7 +58,29 @@
                 ],
             }
         },
-        methods: {}
+        methods: {
+            getFocus: function () {
+                this.initListeners();
+                this.giveFocus();
+                this.$parent.removeListeners();
+            },
+            listener: function ({code}) {
+                {
+                    switch (code) {
+                        case 'ArrowRight' :
+                            this.setFocus(1);
+                            break;
+                        case 'ArrowLeft' :
+                            this.setFocus(-1);
+                    }
+                }
+            }
+
+        },
+        mounted() {
+            // on set le focus sur le content selon le sous menu selectionné
+           // EventBus.$on('subMenuSelected', (index) => this.focus = index);
+        }
     }
 </script>
 

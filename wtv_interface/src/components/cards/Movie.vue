@@ -1,5 +1,5 @@
 <template>
-    <div class="movie">
+    <div class="movie" :class="{focusborder: focused}">
         <div class="view" :style="style">
 
         </div>
@@ -10,26 +10,30 @@
 </template>
 
 <script>
-export default {
-    props: ['content'],
-    created(){
+    import {mixinEltWithoutChild} from "../../mixins/mixinEltWithoutChild";
 
-    },
-    computed: {
-        style() {
-            return 'background-image: url(/imgs/' + this.content.img + ')';
+    export default {
+        props: ['content'],
+        mixins: [mixinEltWithoutChild],
+        created() {
+
+        },
+        computed: {
+            style() {
+                return 'background-image: url(/imgs/' + this.content.img + ')';
+            }
         }
     }
-}
 </script>
 
 <style scoped lang="less">
     @import '~normalize.css';
     @import '../../assets/style/style.less';
-.movie{
-    height: 95%;
-    width: 80%;
-    margin: 8% 10% 0% 10%;
+
+    .movie {
+        height: 95%;
+        width: 80%;
+        margin: 8% 10% 0% 10%;
 
         .view {
             background-repeat: no-repeat;
@@ -38,9 +42,9 @@ export default {
             height: 90%;
             background-position: center;
         }
-    .sub{
-        height: 7%;
-    }
+        .sub {
+            height: 7%;
+        }
 
-}
+    }
 </style>

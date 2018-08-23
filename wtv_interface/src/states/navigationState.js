@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {EventBus} from "../main";
 
-let source = new Vue({
+export let navigationState = new Vue({
     data: {
         indexSubMenu: 0,
         modalOpened: false,
@@ -24,4 +24,4 @@ let source = new Vue({
     }
 })
 
-export default source;
+
