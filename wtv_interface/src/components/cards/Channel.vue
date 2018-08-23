@@ -18,6 +18,9 @@
             style() {
                 return 'background-image: url(/imgs/' + this.content.img + ')';
             }
+        },
+        mounted(){
+
         }
     };
 </script>

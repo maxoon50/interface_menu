@@ -1,10 +1,28 @@
 <template>
     <div class="backAppli">
+            <div class="view" :style="style">
+            </div>
+            <div class="sub color-bg-sub">
+                {{content.title}}
+            </div>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props: ['content'],
+    created() {
+
+    },
+    computed: {
+        style() {
+            return 'background-image: url(/imgs/' + this.content.img + ')';
+        }
+    },
+    mounted(){
+
+    }
+};
 </script>
 
 <style lang="less" >
