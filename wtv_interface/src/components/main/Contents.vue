@@ -23,12 +23,13 @@
             Movie
         },
         mixins: [mixinEltWithChild],
-        props: ['categorie', 'data'],
+        props: ['categorie', 'data', 'index'],
         data: function () {
             return {}
         },
         methods: {
             isFocus: function () {
+                // on reset l'index pour que le subMenu le récupère
                 navigationState.indexSubMenu = this.index;
                 this.focused = true;
                 this.getFocus();

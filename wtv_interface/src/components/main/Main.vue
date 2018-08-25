@@ -10,7 +10,8 @@
                        :key="index"
                        :categorie="child.type"
                        :data="child.dataSource"
-                       ref="contents">
+                       ref="contents"
+                       :index="index">
             </component>
         </template>
     </main>
@@ -56,6 +57,8 @@
                         dataSource: myChannelState.channels
                     },
                 ],
+                focus: 0,
+
             }
         },
         methods: {
@@ -79,7 +82,9 @@
         },
         mounted() {
             // on set le focus sur le content selon le sous menu selectionné
-           // EventBus.$on('subMenuSelected', (index) => this.focus = index);
+            EventBus.$on('subMenuSelected', ( index) => {
+                this.focus = index;
+            });
         }
     }
 </script>
