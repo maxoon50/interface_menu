@@ -38,6 +38,7 @@
                 if (this.focus <= 0 && pos == -1) {
                     this.removeFocus();
                     this.$parent.removeFocus();
+
                     this.$parent.$parent.isFocus();
                     return;
                 } else if (this.focus == this.$refs.contents.length - 1 && pos == 1) {
@@ -68,12 +69,13 @@
     }
 </script>
 
-<style scoped>
+<style lang='less'>
+
+    @import '../../assets/style/style.less';
     .cont-chan {
+        .large-row;
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
-        width: 20%;
     }
 </style>
