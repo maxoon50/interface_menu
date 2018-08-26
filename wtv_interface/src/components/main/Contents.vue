@@ -35,12 +35,14 @@
                 this.getFocus();
             },
             setFocus: function (pos) {
-                /* si on arrive en haut /*/
+                /* si on arrive en haut:
+                    => on remove le focus du Main
+                    => on donne le focus à App (index 2)
+                */
                 if (this.focus <= 0 && pos == -1) {
                     this.removeFocus();
                     this.$parent.removeFocus();
-
-                    this.$parent.$parent.isFocus();
+                    this.$parent.$parent.isFocus(2);
                     return;
                 } else if (this.focus == this.$refs.contents.length - 1 && pos == 1) {
                     this.focus = 0;

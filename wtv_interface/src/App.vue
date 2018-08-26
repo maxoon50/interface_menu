@@ -28,10 +28,9 @@
             }
         },
         methods: {
-            isFocus: function () {
+            isFocus: function (index) {
                 this.focused = true;
-                this.focus = 1;
-                this.getFocus(1);
+                this.getFocus(index || this.focus);
             },
             setFocus: function (pos) {
                 if (this.focus <= 0 && pos == -1) {
@@ -56,8 +55,7 @@
         },
         mounted: function () {
             this.initListeners();
-            this.lastFocused = this.$refs.contents[0];
-            this.lastFocused.isFocus();
+            this.isFocus(1);
         },
     }
 </script>
