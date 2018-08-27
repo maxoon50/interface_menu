@@ -1,6 +1,6 @@
 <template>
     <div class="cont-chan" >
-        <component v-for="(elt,index) in data"
+        <component v-for="(elt,index) in firstDatas"
                    :key="index"
                    v-bind:is="categorie"
                    :content="elt"
@@ -25,7 +25,9 @@
         mixins: [mixinEltWithChild],
         props: ['categorie', 'data', 'index'],
         data: function () {
-            return {}
+            return {
+                firstDatas : null,
+            }
         },
         methods: {
             isFocus: function () {
@@ -63,9 +65,11 @@
                             this.setFocus(-1);
                     }
                 }
-            }
+            },
+
         },
         created() {
+            this.firstDatas = this.data.slice(0,3);
         },
         mounted() {
         },

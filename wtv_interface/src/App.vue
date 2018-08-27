@@ -68,6 +68,7 @@
     html,
     body {
         .full-height;
+        overflow: hidden;
     }
 
     #app {
@@ -89,5 +90,8 @@
         -webkit-box-shadow: 0 0 10px lime;
         box-shadow: 0 0 10px lime;
         transition: all 0.3s;
+    }
+    .hide {
+        display: none !important;
     }
 </style>

@@ -1,5 +1,6 @@
 <template>
     <main id="main">
+        <Modal/>
         <!-- ici on envoie:
          => la catégorie pour créer les éléments 'Contents' en dynamique,
          => les datas en provenance des states
