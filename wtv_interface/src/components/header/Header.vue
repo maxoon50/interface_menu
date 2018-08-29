@@ -1,9 +1,10 @@
 <template>
-    <header :class="{focus: focused}">
+    <header>
         <div id="logo">
             <img src="/imgs/wiztivi.png" alt="wiztivi logo">
         </div>
-        <User/>
+
+        <User v-for="elt in 1" ref="contents"/>
         <Time/>
     </header>
 </template>
@@ -11,14 +12,14 @@
 <script>
     import Time from './Time';
     import User from './User';
-    import { mixinEltWithoutChild } from '../../mixins/mixinEltWithoutChild';
+    import { mixinEltWithChild } from '../../mixins/mixinEltWithChild';
     
     export default {
         components: {
             Time,
             User
         },
-        mixins: [ mixinEltWithoutChild ],
+        mixins: [ mixinEltWithChild ],
         data: function() {
             return {
     

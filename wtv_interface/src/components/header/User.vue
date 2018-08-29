@@ -1,6 +1,6 @@
 <template>
     <div id="user">
-        <div class="user-cont">
+        <div class="user-cont"  :class="{focus: focused}">
             <p>name user</p>
             <img src="/imgs/logo-user.png" alt="logo user">
     
@@ -9,12 +9,15 @@
 </template>
 
 <script>
+    import { mixinEltWithoutChild } from "../../mixins/mixinEltWithoutChild";
+
     export default {
         data: function() {
             return {
     
             }
         },
+        mixins: [mixinEltWithoutChild],
         methods: {
     
         }
