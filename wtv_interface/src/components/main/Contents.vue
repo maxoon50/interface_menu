@@ -57,11 +57,9 @@
                 {
                     switch (code) {
                         case 'ArrowDown':
-                            console.log('down contents');
                             this.setFocus(1);
                             break;
                         case 'ArrowUp':
-                            console.log('up contents');
                             this.setFocus(-1);
                     }
                 }

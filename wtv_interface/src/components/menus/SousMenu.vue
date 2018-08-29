@@ -1,7 +1,7 @@
 <template>
     <div id="sub-menu">
         <ItemMenu class="item-menu"
-                  v-for="(item, index) in  subMenuElements"
+                  v-for="(item, index) in  menuElements"
                   :title="item"
                   :index="index"
                   ref="contents"
@@ -23,7 +23,7 @@
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                subMenuElements: ['menu1', 'menu2', 'menu3', 'menu4', 'menu5'],
+                menuElements: ['channels', 'contents', 'apps', 'films', 'channels'],
             }
         },
         methods: {
@@ -39,6 +39,7 @@
                 navigationState.modalY = 0;
                 this.removeListeners(this.listener);
                 this.$parent.removeListeners();
+                navigationState.contentModal = this.menuElements[this.focus];
                 navigationState.modalOpened = true;
             },
             listener: function ({code}) {

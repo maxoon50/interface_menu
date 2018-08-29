@@ -39,7 +39,7 @@
                 contentTypes: [
                     {
                         type: 'channel',
-                        dataSource: myChannelState.channels
+                        dataSource: myChannelState.contents
                     },
                     {
                         type: 'channel',
@@ -47,15 +47,15 @@
                     },
                     {
                         type: 'appli',
-                        dataSource: myChannelState.channels
+                        dataSource: myChannelState.contents
                     },
                     {
                         type: 'movie',
-                        dataSource: myFilmState.films
+                        dataSource: myFilmState.contents
                     },
                     {
                         type: 'channel',
-                        dataSource: myChannelState.channels
+                        dataSource: myChannelState.contents
                     },
                 ],
                 focus: 0,

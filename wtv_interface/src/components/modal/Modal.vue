@@ -5,7 +5,7 @@
                            class="contents"
                            :categorie="'channel'"
                            :key="index"
-                           :data="myContentState.contents.slice(getIndex(0),3)"
+                           :data="dataSource.slice(getIndex(0),3)"
                            ref="contents"
             />
         </div>
@@ -36,7 +36,8 @@
             return {
                 myContentState,
                 nbreRow: 0,
-                navigationState
+                navigationState,
+                dataSource : myContentState.contents
             }
         },
         methods: {
@@ -45,6 +46,12 @@
                     return 0;
                 }
                 return num * 3;
+            },
+            nbreRowCalculate(){
+                // ici on calcule le nbre de row qu'il faudra selon le nombre de films (3 par row)
+                let nbreContents = this.dataSource.length;
+                let mod = nbreContents % 3;
+                this.nbreRow = mod != 0 ? ((nbreContents - mod) / 3) + 1 : ((nbreContents - mod) / 3);
             },
             isFocus: function () {
                 this.focused = true;
@@ -84,15 +91,14 @@
             }
         },
         mounted() {
-            EventBus.$on('ModalOpened', (menuDde) => {
+            EventBus.$on('ModalOpened', (source) => {
+                this.dataSource = source.contents;
+                this.nbreRowCalculate();
                 this.isFocus();
             })
         },
         created() {
-            // ici on calcule le nbre de row qu'il faudra selon le nombre de films (3 par row)
-            let nbreContents = myContentState.contents.length;
-            let mod = nbreContents % 3;
-            this.nbreRow = mod != 0 ? ((nbreContents - mod) / 3) + 1 : ((nbreContents - mod) / 3);
+            this.nbreRowCalculate();
         }
     }
 </script>

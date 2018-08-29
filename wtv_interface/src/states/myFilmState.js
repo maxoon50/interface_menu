@@ -1,7 +1,7 @@
 import Vue from 'vue'
 export const myFilmState =new Vue({
     data: {
-        films:[
+        contents:[
 
             {
                 'title': 'Daredevil',
