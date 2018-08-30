@@ -1,6 +1,6 @@
 <template>
     <transition>
-    <div class="globalChan" :class="{focusborder: focused}" @click="animate" >
+    <div class="globalChan" :class="{focusborder: focused}">
         <div class="view" :style="style">
         </div>
         <div class="sub color-bg-sub">

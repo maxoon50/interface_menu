@@ -19,13 +19,13 @@ export const myChannelState =new Vue({
                 'id': 129
             },
             {
-                'title': 'M6',
-                'img': 'logom6.png',
+                'title': 'TF1',
+                'img': 'TF1.png',
                 'id': 110
             },
             {
-                'title': 'France 2',
-                'img': 'france2.jpg',
+                'title': 'RMC',
+                'img': 'rmc.png',
                 'id': 132
             },
             {
