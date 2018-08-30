@@ -1,11 +1,13 @@
 <template>
-    <div class="globalChan" :class="{focusborder: focused}">
+    <transition>
+    <div class="globalChan" :class="{focusborder: focused}" @click="animate" >
         <div class="view" :style="style">
         </div>
         <div class="sub color-bg-sub">
             {{content.title}}
         </div>
     </div>
+    </transition>
 </template>
 
 <script>
@@ -16,6 +18,11 @@
         mixins: [ mixinEltWithoutChild ],
         created() {
 
+        },
+        methods:{
+          animate(){
+              this.$emit('focusChange');
+          }
         },
         computed: {
             style() {

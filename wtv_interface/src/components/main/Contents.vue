@@ -1,11 +1,15 @@
 <template>
     <div class="cont-chan" >
+        <transition-group name="vertical-slide" tag="span" class="cont-animate">
         <component v-for="(elt,index) in firstDatas"
-                   :key="index"
+                   @focusChange="changeFocus"
+                   :key="elt.id"
                    v-bind:is="categorie"
                    :content="elt"
-                   ref="contents">
+                   ref="contents"
+                    >
         </component>
+        </transition-group>
     </div>
 </template>
 
@@ -64,6 +68,9 @@
                     }
                 }
             },
+            changeFocus(){
+                this.firstDatas.unshift(this.firstDatas.pop());
+            }
 
         },
         created() {
@@ -82,5 +89,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .cont-animation{
+        .full-height;
+        .full-width;
+    }
+    .vertical-slide-move{
+        transition: transform 0.3s ease-out;
+    }
+    .cont-animate{
+        .full-height;
+        .full-width;
     }
 </style>

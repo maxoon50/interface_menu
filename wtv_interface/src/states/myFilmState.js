@@ -6,6 +6,7 @@ export const myFilmState =new Vue({
             {
                 'title': 'Daredevil',
                 'img': 'daredevil.jpg',
+                'id': 124
             },
 
         ]
