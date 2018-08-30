@@ -17,7 +17,7 @@
             }
         },
         methods: {
-
+            ///----------Méthodes Navigation-------------///
             giveFocus: function () {
                 // ici on vérifie s'il y a un last focused et on le remove au besoin
                 if (this.lastFocused != null) {
@@ -48,7 +48,9 @@
                     }
                 }
             }
+            ///----------Fin Méthodes Navigation-------------///
         }
+
     }
 </script>
 

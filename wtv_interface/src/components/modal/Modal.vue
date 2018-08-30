@@ -53,6 +53,7 @@
                 let mod = nbreContents % 3;
                 this.nbreRow = mod != 0 ? ((nbreContents - mod) / 3) + 1 : ((nbreContents - mod) / 3);
             },
+            ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 this.focused = true;
                 this.getFocus(navigationState.modalX);
@@ -89,6 +90,7 @@
                     }
                 }
             }
+            ///----------Fin Méthodes Navigation-------------///
         },
         mounted() {
             EventBus.$on('ModalOpened', (source) => {

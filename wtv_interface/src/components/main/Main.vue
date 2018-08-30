@@ -63,6 +63,7 @@
             }
         },
         methods: {
+            ///----------Méthodes Navigation-------------///
             getFocus: function () {
                 this.initListeners();
                 this.giveFocus();
@@ -79,7 +80,7 @@
                     }
                 }
             }
-
+            ///---------- Fin Méthodes Navigation-------------///
         },
         mounted() {
             // on set le focus sur le content selon le sous menu selectionné

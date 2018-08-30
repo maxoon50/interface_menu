@@ -27,7 +27,7 @@
             }
         },
         methods: {
-
+            ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 this.focused = true;
                 // on doit setter le focus sur le content qui était focus en dernier
@@ -64,7 +64,7 @@
                     }
                 }
             }
-
+            ///----------Fin Méthodes Navigation-------------///
         },
         mounted() {
             EventBus.$on('subMenuSelected', (index) => {

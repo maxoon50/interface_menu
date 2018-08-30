@@ -28,6 +28,7 @@
             }
         },
         methods: {
+            ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 this.focused = true;
                 this.getFocus(navigationState.modalY);
@@ -64,7 +65,7 @@
                     }
                 }
             }
-
+            ///----------Fin Méthodes Navigation-------------///
 
         },
         created() {

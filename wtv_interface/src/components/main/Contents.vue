@@ -34,6 +34,7 @@
             }
         },
         methods: {
+            ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 // on reset l'index pour que le subMenu le récupère
                 navigationState.indexSubMenu = this.index;
@@ -68,8 +69,9 @@
                     }
                 }
             },
+            ///----------Fin Méthodes Navigation-------------///
             changeFocus(){
-                this.firstDatas.unshift(this.firstDatas.pop());
+                this.firstDatas.push(this.firstDatas.shift());
             }
 
         },
@@ -95,7 +97,7 @@
         .full-width;
     }
     .vertical-slide-move{
-        transition: transform 0.3s ease-out;
+        transition: transform 0.4s ease-out;
     }
     .cont-animate{
         .full-height;
