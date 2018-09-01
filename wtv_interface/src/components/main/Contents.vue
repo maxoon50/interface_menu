@@ -36,7 +36,7 @@
             return {
                 firstDatas: null,
                 animatedContent: false,
-                maximumItem: 0
+                showedItems: 0
             }
         },
         methods: {
@@ -44,7 +44,7 @@
             isFocus: function () {
                 // on reset l'index du SubMenu
                 navigationState.indexSubMenu = this.index;
-                this.maximumItem = 0;
+                this.showedItems = 0;
                 this.focused = true;
                  /*=> ici je lui envoie le focus selon le navigation state, pour que si on ressort du content ver subMenu,
                  la navigation se mette directement sur le bon élément*/
@@ -54,20 +54,19 @@
             setFocus: function (pos) {
                 this.focus += pos;
                 //===>  concerne les trois seuls éléments que l'on voit, gère le ArrowUp ///
-                if (this.maximumItem < 3 && pos == 1) {
-                    this.maximumItem++;
+                if (this.showedItems < 3 && pos == 1) {
+                    this.showedItems++;
                 } else if (pos == -1) {
                     this.animatedContent = false;
                     // vieux hack de la mort  ne pas remove !!//
-                    if (this.maximumItem == 3) {
-                        this.maximumItem--;
+                    if (this.showedItems == 3) {
+                        this.showedItems--;
                     }
-                    this.maximumItem--;
+                    this.showedItems--;
                     //===> on remove le focus du content vers le sous menu:
                     //==> on remove le focus du Main
                     //==> on donne le focus à App (index 2)
-                    if (this.maximumItem < 0) {
-                        this.saveLastIndexFocused();
+                    if (this.showedItems < 0) {
                         this.removeFocus();
                         this.$parent.removeFocus();
                         this.$parent.$parent.isFocus(2);
@@ -88,13 +87,22 @@
                     if (this.animatedContent) {
                         this.changeFocus()
                     } else {
-                        if (this.maximumItem > 2) {
+                        if (this.showedItems > 2) {
                             this.animatedContent = true;
                             this.changeFocus()
                         }
                     }
                 }
                 this.giveFocus();
+            },
+            removeFocus: function () {
+                let navStateElt = this.categorie + 'Index';
+                navigationState[navStateElt] = this.focus +1 ;
+                console.log(this.focus+1)
+                this.focused = false;
+                this.removeListeners();
+                this.lastFocused.removeFocus();
+                //remove tous les focus des enfants
             },
             listener: function ({code}) {
                 {
@@ -107,27 +115,7 @@
                     }
                 }
             },
-            saveLastIndexFocused(){
-                {
-                    switch (this.categorie) {
-                        case GLOBALS.CHANNELS:
-                            navigationState.channelIndex = this.focus +1;
-                            break;
-                        case GLOBALS.CONTENTS:
-                            navigationState.myContentIndex = this.focus +1;
-                            break;
-                        case GLOBALS.APPS:
-                            navigationState.appliIndex = this.focus +1;
-                            break;
-                        case GLOBALS.MOVIES:
-                            navigationState.movieIndex = this.focus +1;
-                            break;
-                        case GLOBALS.EXTRAS:
-                            navigationState.extraIndex = this.focus +1;
-                            break;
-                    }
-                }
-            },
+
             ///----------Fin Méthodes Navigation-------------///
             
             changeFocus() {
