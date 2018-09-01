@@ -16,14 +16,19 @@
     import Channel from '../cards/Channel';
     import Appli from '../cards/Appli';
     import Movie from '../cards/Movie';
-    import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
-    import {navigationState} from "../../states/navigationState";
+    import Extra from '../cards/Extra';
+    import MyContent from '../cards/MyContent';
+    import { mixinEltWithChild } from '../../mixins/mixinEltWithChild';
+    import { navigationState } from "../../states/navigationState";
+    import { GLOBALS } from "../../const/globals";
 
     export default {
         components: {
             Channel,
+            MyContent,
             Appli,
-            Movie
+            Movie,
+            Extra
         },
         mixins: [mixinEltWithChild],
         props: ['categorie', 'data', 'index'],
@@ -37,11 +42,14 @@
         methods: {
             ///----------Méthodes Navigation-------------///
             isFocus: function () {
-                // on reset l'index pour que le subMenu le récupère
+                // on reset l'index du SubMenu
                 navigationState.indexSubMenu = this.index;
                 this.maximumItem = 0;
                 this.focused = true;
-                this.getFocus();
+                 /*=> ici je lui envoie le focus selon le navigation state, pour que si on ressort du content ver subMenu,
+                 la navigation se mette directement sur le bon élément*/
+                let navStateElt = this.categorie + 'Index';
+                this.getFocus(navigationState[navStateElt]);
             },
             setFocus: function (pos) {
                 this.focus += pos;
@@ -59,6 +67,7 @@
                     //==> on remove le focus du Main
                     //==> on donne le focus à App (index 2)
                     if (this.maximumItem < 0) {
+                        this.saveLastIndexFocused();
                         this.removeFocus();
                         this.$parent.removeFocus();
                         this.$parent.$parent.isFocus(2);
@@ -95,6 +104,27 @@
                             break;
                         case 'ArrowUp':
                             this.setFocus(-1);
+                    }
+                }
+            },
+            saveLastIndexFocused(){
+                {
+                    switch (this.categorie) {
+                        case GLOBALS.CHANNELS:
+                            navigationState.channelIndex = this.focus +1;
+                            break;
+                        case GLOBALS.CONTENTS:
+                            navigationState.myContentIndex = this.focus +1;
+                            break;
+                        case GLOBALS.APPS:
+                            navigationState.appliIndex = this.focus +1;
+                            break;
+                        case GLOBALS.MOVIES:
+                            navigationState.movieIndex = this.focus +1;
+                            break;
+                        case GLOBALS.EXTRAS:
+                            navigationState.extraIndex = this.focus +1;
+                            break;
                     }
                 }
             },

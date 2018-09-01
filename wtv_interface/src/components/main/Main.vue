@@ -26,6 +26,7 @@
     import {myFilmState} from '../../states/myFilmState';
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import { EventBus } from "../../main";
+    import { GLOBALS } from "../../const/globals";
 
     export default {
 
@@ -38,23 +39,23 @@
             return {
                 contentTypes: [
                     {
-                        type: 'channel',
+                        type: GLOBALS.CHANNELS,
                         dataSource: myChannelState.contents
                     },
                     {
-                        type: 'channel',
+                        type: GLOBALS.CONTENTS,
                         dataSource: myContentState.contents
                     },
                     {
-                        type: 'appli',
+                        type: GLOBALS.APPS,
                         dataSource: myChannelState.contents
                     },
                     {
-                        type: 'movie',
+                        type: GLOBALS.MOVIES,
                         dataSource: myFilmState.contents
                     },
                     {
-                        type: 'channel',
+                        type: GLOBALS.EXTRAS,
                         dataSource: myChannelState.contents
                     },
                 ],
