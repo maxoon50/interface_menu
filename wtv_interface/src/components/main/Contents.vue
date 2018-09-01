@@ -18,9 +18,9 @@
     import Movie from '../cards/Movie';
     import Extra from '../cards/Extra';
     import MyContent from '../cards/MyContent';
-    import { mixinEltWithChild } from '../../mixins/mixinEltWithChild';
-    import { navigationState } from "../../states/navigationState";
-    import { GLOBALS } from "../../const/globals";
+    import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
+    import {navigationState} from "../../states/navigationState";
+
 
     export default {
         components: {
@@ -36,7 +36,8 @@
             return {
                 firstDatas: null,
                 animatedContent: false,
-                showedItems: 0
+                showedItems: 0,
+                indexShowedItems: [0, 1, 2],
             }
         },
         methods: {
@@ -46,10 +47,9 @@
                 navigationState.indexSubMenu = this.index;
                 this.showedItems = 0;
                 this.focused = true;
-                 /*=> ici je lui envoie le focus selon le navigation state, pour que si on ressort du content ver subMenu,
-                 la navigation se mette directement sur le bon élément*/
-                let navStateElt = this.categorie + 'Index';
-                this.getFocus(navigationState[navStateElt]);
+                this.animatedContent = false;
+                /*=> ici je lui envoie le focus sur le premier élément du 'indexShowItems'*/
+                this.getFocus(this.indexShowedItems[0]);
             },
             setFocus: function (pos) {
                 this.focus += pos;
@@ -78,7 +78,7 @@
                 // => quand on arrive en fin ou début de boucle
                 if (this.focus == this.$refs.contents.length) {
                     this.focus = 0;
-                }else if (this.focus < 0) {
+                } else if (this.focus < 0) {
                     this.focus = this.$refs.contents.length - 1
                 }
 
@@ -95,15 +95,6 @@
                 }
                 this.giveFocus();
             },
-            removeFocus: function () {
-                let navStateElt = this.categorie + 'Index';
-                navigationState[navStateElt] = this.focus +1 ;
-                console.log(this.focus+1)
-                this.focused = false;
-                this.removeListeners();
-                this.lastFocused.removeFocus();
-                //remove tous les focus des enfants
-            },
             listener: function ({code}) {
                 {
                     switch (code) {
@@ -115,16 +106,24 @@
                     }
                 }
             },
-
             ///----------Fin Méthodes Navigation-------------///
-            
+
             changeFocus() {
+                /* ici on remplit un array des trois index qui sont montrés à l'écran*/
+                this.indexShowedItems = [];
                 this.firstDatas.push(this.firstDatas.shift());
+                for(let i = 0; i< 3; i++){
+                    this.indexShowedItems.push(this.firstDatas[i].index)
+                }
             }
 
         },
         created() {
-            this.firstDatas = this.data.slice(0, 5);
+            /*on rajoute une property 'index' aux datas pour permettre de mieux gérer la navigation*/
+            this.firstDatas = this.data
+                .map((elt, index) => {
+                elt['index'] = index;
+                return elt;})
         },
         mounted() {
         },
