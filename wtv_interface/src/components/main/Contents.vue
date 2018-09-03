@@ -1,7 +1,7 @@
 <template>
     <div class="cont-chan">
         <transition-group name="vertical-slide" tag="span" class="cont-animate">
-            <component v-for="(elt,index) in firstDatas"
+            <component v-for="(elt,index) in dataWithIndex(data)"
                        :key="elt.id"
                        v-bind:is="categorie"
                        :content="elt"
@@ -34,7 +34,6 @@
         props: ['categorie', 'data', 'index'],
         data: function () {
             return {
-                firstDatas: null,
                 animatedContent: false,
                 showedItems: 0,
                 indexShowedItems: [0, 1, 2],
@@ -106,6 +105,13 @@
                     }
                 }
             },
+            // méthode qui ajoute un index pour permettre l'animation
+            dataWithIndex(data){
+                return data
+                    .map((elt, index) => {
+                        elt['index'] = index;
+                        return elt;})
+            },
             ///----------Fin Méthodes Navigation-------------///
 
             changeFocus() {
@@ -119,14 +125,9 @@
 
         },
         created() {
-            /*on rajoute une property 'index' aux datas pour permettre de mieux gérer la navigation*/
-            this.firstDatas = this.data
-                .map((elt, index) => {
-                elt['index'] = index;
-                return elt;})
         },
         mounted() {
-        },
+        }
     }
 </script>
 
