@@ -12,7 +12,8 @@
                        :categorie="child.type"
                        :data="child.dataSource"
                        ref="contents"
-                       :index="index">
+                       :index="index"
+            >
             </component>
         </template>
     </main>
@@ -24,9 +25,11 @@
     import {myChannelState} from '../../states/myChannelState';
     import {myContentState} from '../../states/myContentState';
     import {myFilmState} from '../../states/myFilmState';
+    import {myAppState} from "../../states/myAppState";
+    import {myExtraState} from "../../states/myExtraState";
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
-    import { EventBus } from "../../main";
-    import { GLOBALS } from "../../const/globals";
+    import {EventBus} from "../../main";
+    import {GLOBALS} from "../../const/globals";
 
     export default {
 
@@ -48,7 +51,7 @@
                     },
                     {
                         type: GLOBALS.APPS,
-                        dataSource: myChannelState.contents
+                        dataSource: myAppState.contents
                     },
                     {
                         type: GLOBALS.MOVIES,
@@ -56,7 +59,7 @@
                     },
                     {
                         type: GLOBALS.EXTRAS,
-                        dataSource: myChannelState.contents
+                        dataSource: myExtraState.contents
                     },
                 ],
                 focus: 0,
@@ -64,6 +67,10 @@
             }
         },
         methods: {
+            test() {
+                console.log('oki')
+
+            },
             ///----------Méthodes Navigation-------------///
             getFocus: function () {
                 this.initListeners();
@@ -85,9 +92,10 @@
         },
         mounted() {
             // on set le focus sur le content selon le sous menu selectionné
-            EventBus.$on('subMenuSelected', ( index) => {
+            EventBus.$on('subMenuSelected', (index) => {
                 this.focus = index;
             });
+
         }
     }
 </script>
