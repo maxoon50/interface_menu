@@ -6,7 +6,17 @@ export const myFilmState =new Vue({
             {
                 'title': 'Daredevil',
                 'img': 'daredevil.jpg',
+                'id': 125
+            },
+            {
+                'title': 'Daredevil',
+                'img': 'daredevil.jpg',
                 'id': 124
+            },
+            {
+                'title': 'Daredevil',
+                'img': 'daredevil.jpg',
+                'id': 126
             },
 
         ]
