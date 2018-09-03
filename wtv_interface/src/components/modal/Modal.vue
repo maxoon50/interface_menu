@@ -5,7 +5,7 @@
                            class="contents"
                            :categorie="'channel'"
                            :key="index"
-                           :data="dataSource.slice(getIndex(0),3)"
+                           :data="dataSource.slice(getIndex(index),(index+1)*3)"
                            ref="contents"
             />
         </div>
