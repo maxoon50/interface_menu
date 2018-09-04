@@ -13,8 +13,7 @@ export let navigationState = new Vue({
     *  modalX => position X dans la modal
     *  contentModal => renvoie la bonne dataSource selon le type de contenu pour la modal
     *  dataSource => permet de stocker les datas et de les renvoyer vers la modal
-    *  channelsIndex, contentsIndex, blablaIndex... => servent à retenir la position Y dans le content channels, contents.. etc
-    * */
+   */
     data: {
         indexSubMenu: 0,
         modalOpened: false,
