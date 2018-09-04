@@ -23,7 +23,8 @@
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                menuElements: ['channels', 'contents', 'apps', 'films', 'channels'],
+                menuElements: navigationState.menuHome
+                // menuElements: ['channels', 'contents', 'apps', 'films', 'channels'],
             }
         },
         methods: {
@@ -74,9 +75,10 @@
                 this.isFocus();
                 this.$parent.initListeners();
             })
-            //  EventBus.$on('MenuChanged', (namePage) => {
-            //         this.focus = index;
-            //     });
+            EventBus.$on('MenuChanged', (tab) => {
+                console.log(tab[0])
+                this.menuElements = tab[0]
+            });
         }
 
     }
@@ -99,5 +101,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-size:20px;
+        font-weight:900;
+        color:white;
     }
 </style>

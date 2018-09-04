@@ -28,6 +28,7 @@
     import {myFilmState} from '../../states/myFilmState';
     import {myAppState} from "../../states/myAppState";
     import {myExtraState} from "../../states/myExtraState";
+    import {navigationState} from "../../states/navigationState";
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {EventBus} from "../../main";
     import {GLOBALS} from "../../const/globals";
@@ -68,6 +69,7 @@
                         nbreItemsShowed: 3
                     },
                 ],
+                // contentTypes: this.contentTypesHome,
                 focus: 0,
 
             }
@@ -101,7 +103,9 @@
             EventBus.$on('subMenuSelected', (index) => {
                 this.focus = index;
             });
-
+            EventBus.$on('MenuChanged', (tab) => {
+                this.menuElements = tab
+            });
         }
     }
 </script>
