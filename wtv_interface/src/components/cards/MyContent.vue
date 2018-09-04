@@ -38,10 +38,10 @@ export default {
       this.stopVid();
     },
     getImg() {
-      return "http://localhost:8081/imgs/" + this.content.img;
+      return "http://localhost:8080/imgs/" + this.content.img;
     },
     getVideo() {
-      return "http://localhost:8081/videos/" + this.content.video;
+      return "http://localhost:8080/videos/" + this.content.video;
     },
     playVid() {
       this.playVideo = true;
