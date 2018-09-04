@@ -28,6 +28,7 @@
     import {myFilmState} from '../../states/myFilmState';
     import {myAppState} from "../../states/myAppState";
     import {myExtraState} from "../../states/myExtraState";
+    import {defaultState} from "../../states/defaultState";
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {EventBus} from "../../main";
     import {GLOBALS} from "../../const/globals";
@@ -43,110 +44,30 @@
             return {
                 contentTypesAutre: [
                     {
-                        type: GLOBALS.CHANNELS,
-                        dataSource: [
-                            {
-                                'title': 'truc',
-                                'img': 'truc.png',
-                                'id': 2527
-                            },
-                            {
-                                'title': 'truc 2',
-                                'img': 'truc.jpg',
-                                'id': 2528
-                            },
-                            {
-                                'title': 'truc 3',
-                                'img': 'truc.png',
-                                'id': 2529
-                            }
-                        ],
-                        nbreItemsShowed: 3
-                    },
-                    {
-                        type: GLOBALS.CONTENTS,
-                        dataSource: [
-                            {
-                                'title': 'truc',
-                                'img': 'truc.png',
-                                'id': 2527
-                            },
-                            {
-                                'title': 'truc 2',
-                                'img': 'truc.jpg',
-                                'id': 2528
-                            },
-                            {
-                                'title': 'truc 3',
-                                'img': 'truc.png',
-                                'id': 2529
-                            }
-                        ],
-                        nbreItemsShowed: 3
-                    },
-                    {
-                        type: GLOBALS.APPS,
-                        dataSource: [
-                            {
-                                'title': 'truc',
-                                'img': 'truc.png',
-                                'id': 2527
-                            },
-                            {
-                                'title': 'truc 2',
-                                'img': 'truc.jpg',
-                                'id': 2528
-                            },
-                            {
-                                'title': 'truc 3',
-                                'img': 'truc.png',
-                                'id': 2529
-                            }
-                        ],
-                        nbreItemsShowed: 3
-                    },
-                    {
                         type: GLOBALS.MOVIES,
-                        dataSource: [
-                            {
-                                'title': 'truc',
-                                'img': 'truc.png',
-                                'id': 2527
-                            },
-                            {
-                                'title': 'truc 2',
-                                'img': 'truc.jpg',
-                                'id': 2528
-                            },
-                            {
-                                'title': 'truc 3',
-                                'img': 'truc.png',
-                                'id': 2529
-                            }
-                        ],
+                        dataSource: defaultState.contents,
                         nbreItemsShowed: 1
                     },
                     {
-                        type: GLOBALS.EXTRAS,
-                        dataSource: [
-                            {
-                                'title': 'truc',
-                                'img': 'truc.png',
-                                'id': 2527
-                            },
-                            {
-                                'title': 'truc 2',
-                                'img': 'truc.jpg',
-                                'id': 2528
-                            },
-                            {
-                                'title': 'truc 3',
-                                'img': 'truc.png',
-                                'id': 2529
-                            }
-                        ],
-                        nbreItemsShowed: 3
+                        type: GLOBALS.MOVIES,
+                        dataSource: defaultState.contents,
+                        nbreItemsShowed: 1
                     },
+                    {
+                        type: GLOBALS.MOVIES,
+                        dataSource: defaultState.contents,
+                        nbreItemsShowed: 1
+                    },
+                    {
+                        type: GLOBALS.MOVIES,
+                        dataSource: defaultState.contents,
+                        nbreItemsShowed: 1
+                    },
+                    {
+                        type: GLOBALS.MOVIES,
+                        dataSource: defaultState.contents,
+                        nbreItemsShowed: 1
+                    }
                 ],
                 contentTypesHome: [
                     {
