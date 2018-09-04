@@ -102,10 +102,6 @@
             }
         },
         methods: {
-            test() {
-                console.log('oki')
-
-            },
             ///----------Méthodes Navigation-------------///
             getFocus: function () {
                 this.initListeners();
@@ -138,7 +134,8 @@
                 }
             });
             this.contentTypes = this.contentTypesHome;
-        }
+        },
+
     }
 </script>
 

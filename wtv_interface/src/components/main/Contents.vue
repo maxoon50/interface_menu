@@ -6,6 +6,7 @@
                        v-bind:is="categorie"
                        :content="elt"
                        ref="contents"
+                       :havePlayer=true
             >
             </component>
         </transition-group>
@@ -66,9 +67,10 @@
                     //==> on remove le focus du Main
                     //==> on donne le focus à App (index 2)
                     if (this.showedItems < 0) {
-                 /*       this.removeFocus();
+                    /*    this.removeFocus();
                         this.$parent.removeFocus();*/
                         this.$parent.$parent.isFocus(2);
+                        this.lastFocused = null;
                         // il faut émit l'index ou se trouve l'élément au check out pour faciliter le check in
                         return;
                     }

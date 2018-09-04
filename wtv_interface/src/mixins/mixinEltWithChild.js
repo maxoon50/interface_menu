@@ -16,6 +16,7 @@ export const mixinEltWithChild = {
             this.focused = false;
             this.removeListeners();
             this.lastFocused.removeFocus();
+            this.lastFocused = null;
             //remove tous les focus des enfants
         },
         getFocus: function (index) {
