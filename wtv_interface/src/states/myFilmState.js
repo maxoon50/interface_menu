@@ -9,13 +9,13 @@ export const myFilmState =new Vue({
                 'id': 125
             },
             {
-                'title': 'Daredevil',
-                'img': 'daredevil.jpg',
+                'title': 'L\'invasion des profanateurs de sépulture',
+                'img': 'invasion.jpg',
                 'id': 124
             },
             {
-                'title': 'Daredevil',
-                'img': 'daredevil.jpg',
+                'title': 'Jackie Brown',
+                'img': 'jackie.jpg',
                 'id': 126
             },
 

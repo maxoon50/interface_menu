@@ -31,7 +31,7 @@
             Extra
         },
         mixins: [mixinEltWithChild],
-        props: ['categorie', 'data', 'index'],
+        props: ['categorie', 'data', 'index', 'nbreItemsShowed'],
         data: function () {
             return {
                 animatedContent: false,
@@ -53,12 +53,12 @@
             setFocus: function (pos) {
                 this.focus += pos;
                 //===>  concerne les trois seuls éléments que l'on voit, gère le ArrowUp ///
-                if (this.showedItems < 3 && pos == 1) {
+                if (this.showedItems < this.nbreItemsShowed && pos == 1) {
                     this.showedItems++;
                 } else if (pos == -1) {
                     this.animatedContent = false;
                     // vieux hack de la mort  ne pas remove !!//
-                    if (this.showedItems == 3) {
+                    if (this.showedItems == this.nbreItemsShowed) {
                         this.showedItems--;
                     }
                     this.showedItems--;
@@ -86,7 +86,7 @@
                     if (this.animatedContent) {
                         this.changeFocus()
                     } else {
-                        if (this.showedItems > 2) {
+                        if (this.showedItems > this.nbreItemsShowed-1) {
                             this.animatedContent = true;
                             this.changeFocus()
                         }

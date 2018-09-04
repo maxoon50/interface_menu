@@ -11,6 +11,7 @@
                        :key="index"
                        :categorie="child.type"
                        :data="child.dataSource"
+                       :nbreItemsShowed="child.nbreItemsShowed"
                        ref="contents"
                        :index="index"
             >
@@ -43,23 +44,28 @@
                 contentTypes: [
                     {
                         type: GLOBALS.CHANNELS,
-                        dataSource: myChannelState.contents
+                        dataSource: myChannelState.contents,
+                        nbreItemsShowed: 3
                     },
                     {
                         type: GLOBALS.CONTENTS,
-                        dataSource: myContentState.contents
+                        dataSource: myContentState.contents,
+                        nbreItemsShowed: 3
                     },
                     {
                         type: GLOBALS.APPS,
-                        dataSource: myAppState.contents
+                        dataSource: myAppState.contents,
+                        nbreItemsShowed: 3
                     },
                     {
                         type: GLOBALS.MOVIES,
-                        dataSource: myFilmState.contents
+                        dataSource: myFilmState.contents,
+                        nbreItemsShowed: 1
                     },
                     {
                         type: GLOBALS.EXTRAS,
-                        dataSource: myExtraState.contents
+                        dataSource: myExtraState.contents,
+                        nbreItemsShowed: 3
                     },
                 ],
                 focus: 0,
