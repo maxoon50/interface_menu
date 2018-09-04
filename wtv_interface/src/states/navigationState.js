@@ -26,7 +26,8 @@ export let navigationState = new Vue({
         myContentIndex : 0,
         appliIndex : 0,
         movieIndex : 0,
-        extraIndex : 0
+        extraIndex : 0,
+        menuChanged: null
     },methods:{
 
     },
@@ -59,6 +60,9 @@ export let navigationState = new Vue({
         },
         channelsIndex: function(){
             console.log(this.channelsIndex)
+        },
+        menuChanged: function() {
+            EventBus.$emit('MenuChanged', this.menuSelected);
         }
     }
 })

@@ -11,7 +11,8 @@
 </template>
 
 <script>
-
+    import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
+    import {navigationState} from "../../states/navigationState";
     export default {
         components: {},
         data() {
@@ -44,6 +45,7 @@
                 } else {
                     this.focus += pos;
                 }
+                navigationState.menuChanged = this.$refs.contents[this.focus].innerText;
             },
             initListeners: function () {
                 window.addEventListener('keydown', this.listener);
@@ -63,7 +65,9 @@
                     }
                 }
             },
-
+            mounted() {
+               
+            }
             //     ///----------Fin Méthodes Navigation------///
             // },
         },
