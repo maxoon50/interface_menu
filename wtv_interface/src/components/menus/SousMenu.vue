@@ -74,6 +74,9 @@
                 this.isFocus();
                 this.$parent.initListeners();
             })
+            //  EventBus.$on('MenuChanged', (namePage) => {
+            //         this.focus = index;
+            //     });
         }
 
     }
