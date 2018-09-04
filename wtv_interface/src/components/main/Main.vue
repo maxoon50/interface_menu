@@ -28,7 +28,6 @@
     import {myFilmState} from '../../states/myFilmState';
     import {myAppState} from "../../states/myAppState";
     import {myExtraState} from "../../states/myExtraState";
-    import {navigationState} from "../../states/navigationState";
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {EventBus} from "../../main";
     import {GLOBALS} from "../../const/globals";
@@ -42,7 +41,114 @@
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                contentTypes: [
+                contentTypesAutre: [
+                    {
+                        type: GLOBALS.CHANNELS,
+                        dataSource: [
+                            {
+                                'title': 'truc',
+                                'img': 'truc.png',
+                                'id': 2527
+                            },
+                            {
+                                'title': 'truc 2',
+                                'img': 'truc.jpg',
+                                'id': 2528
+                            },
+                            {
+                                'title': 'truc 3',
+                                'img': 'truc.png',
+                                'id': 2529
+                            }
+                        ],
+                        nbreItemsShowed: 3
+                    },
+                    {
+                        type: GLOBALS.CONTENTS,
+                        dataSource: [
+                            {
+                                'title': 'truc',
+                                'img': 'truc.png',
+                                'id': 2527
+                            },
+                            {
+                                'title': 'truc 2',
+                                'img': 'truc.jpg',
+                                'id': 2528
+                            },
+                            {
+                                'title': 'truc 3',
+                                'img': 'truc.png',
+                                'id': 2529
+                            }
+                        ],
+                        nbreItemsShowed: 3
+                    },
+                    {
+                        type: GLOBALS.APPS,
+                        dataSource: [
+                            {
+                                'title': 'truc',
+                                'img': 'truc.png',
+                                'id': 2527
+                            },
+                            {
+                                'title': 'truc 2',
+                                'img': 'truc.jpg',
+                                'id': 2528
+                            },
+                            {
+                                'title': 'truc 3',
+                                'img': 'truc.png',
+                                'id': 2529
+                            }
+                        ],
+                        nbreItemsShowed: 3
+                    },
+                    {
+                        type: GLOBALS.MOVIES,
+                        dataSource: [
+                            {
+                                'title': 'truc',
+                                'img': 'truc.png',
+                                'id': 2527
+                            },
+                            {
+                                'title': 'truc 2',
+                                'img': 'truc.jpg',
+                                'id': 2528
+                            },
+                            {
+                                'title': 'truc 3',
+                                'img': 'truc.png',
+                                'id': 2529
+                            }
+                        ],
+                        nbreItemsShowed: 1
+                    },
+                    {
+                        type: GLOBALS.EXTRAS,
+                        dataSource: [
+                            {
+                                'title': 'truc',
+                                'img': 'truc.png',
+                                'id': 2527
+                            },
+                            {
+                                'title': 'truc 2',
+                                'img': 'truc.jpg',
+                                'id': 2528
+                            },
+                            {
+                                'title': 'truc 3',
+                                'img': 'truc.png',
+                                'id': 2529
+                            }
+                        ],
+                        nbreItemsShowed: 3
+                    },
+                ],
+                contentTypesHome: [
                     {
                         type: GLOBALS.CHANNELS,
                         dataSource: myChannelState.contents,
@@ -69,7 +175,7 @@
                         nbreItemsShowed: 3
                     },
                 ],
-                // contentTypes: this.contentTypesHome,
+                contentTypes: null,
                 focus: 0,
 
             }
@@ -104,8 +210,13 @@
                 this.focus = index;
             });
             EventBus.$on('MenuChanged', (tab) => {
-                this.menuElements = tab
+                if(tab[1] === 'MEDIA CENTER') {
+                    this.contentTypes = this.contentTypesHome
+                } else {
+                    this.contentTypes = this.contentTypesAutre
+                }
             });
+            this.contentTypes = this.contentTypesHome;
         }
     }
 </script>

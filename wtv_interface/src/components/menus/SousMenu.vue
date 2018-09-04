@@ -76,7 +76,6 @@
                 this.$parent.initListeners();
             })
             EventBus.$on('MenuChanged', (tab) => {
-                console.log(tab[0])
                 this.menuElements = tab[0]
             });
         }
