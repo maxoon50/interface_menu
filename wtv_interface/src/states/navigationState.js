@@ -84,6 +84,9 @@ export let navigationState = new Vue({
                 case 'SETTINGS' :
                     EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
                     break;
+                case 'VOD' :
+                    EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
+                    break;
             }
         }
     }
