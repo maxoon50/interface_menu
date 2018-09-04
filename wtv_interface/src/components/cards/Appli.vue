@@ -2,9 +2,6 @@
     <div class="backAppli" :class="{focusborder: focused}">
         <div class="view" :style="style">
         </div>
-        <div class="sub color-bg-sub">
-            {{content.title}}
-        </div>
     </div>
 </template>
 
@@ -30,10 +27,10 @@
 <style lang="less">
     .backAppli {
         //border : solid 5px black;
-        height: 25%;
-        width: 70%;
+        height: 34%;
+        width: 50%;
         margin: 10% 10% 0% 10%;
-        background: url("/imgs/reca.jpg");
+        //background: url("/imgs/reca.jpg");
         background-repeat: no-repeat center fixed;
         background-size: cover;
         background-clip: padding-box;
