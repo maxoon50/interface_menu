@@ -69,22 +69,7 @@ export let navigationState = new Vue({
                 case 'MEDIA CENTER' :
                     EventBus.$emit('MenuChanged', [this.menuHome, this.menuChanged])
                     break;
-                case 'GUIDE' :
-                    EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
-                    break;
-                case 'TV' :
-                    EventBus.$emit('MenuChanged', [this.menuHome, this.menuChanged])
-                    break;
-                case 'HOME' :
-                    EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
-                    break;
-                case 'SEARCH' :
-                    EventBus.$emit('MenuChanged', [this.menuHome, this.menuChanged])
-                    break;
-                case 'SETTINGS' :
-                    EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
-                    break;
-                case 'VOD' :
+                default :
                     EventBus.$emit('MenuChanged', [this.menuPage, this.menuChanged])
                     break;
             }
