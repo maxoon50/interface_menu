@@ -127,7 +127,7 @@
                 this.focus = index;
             });
             EventBus.$on('MenuChanged', (tab) => {
-                if(tab[1] === 'MEDIA CENTER') {
+                if(tab[1] === 'HOME') {
                     this.contentTypes = this.contentTypesHome
                 } else {
                     this.contentTypes = this.contentTypesAutre

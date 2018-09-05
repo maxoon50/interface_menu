@@ -17,7 +17,7 @@
         components: {},
         data() {
             return {
-                pages: ['HOME', 'TV', 'GUIDE', 'MEDIA CENTER', 'VOD', 'SETTINGS', 'SEARCH'],
+                pages: ['MEDIA CENTER', 'TV', 'GUIDE', 'HOME', 'VOD', 'SETTINGS', 'SEARCH'],
                 focus: 3
             }
         },
