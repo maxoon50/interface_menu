@@ -1,5 +1,5 @@
 <template>
-    <div :class="{focus: focused}">{{name}}</div>
+    <div ><img :class="{focusborder: focused}" src="imgs/poppe2.jpg" alt=""></div>
 </template>
 
 <script>

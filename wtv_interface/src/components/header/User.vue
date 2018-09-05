@@ -1,7 +1,7 @@
 <template>
     <div id="user">
         <div class="user-cont">
-            <div class="flex-row">
+            <div class="flex-row animate" :class="{noanimate: !focused}" >
                 <UserItem class="m-sm"
                           v-for="(elt, index) in users"
                           :key="index"
@@ -58,6 +58,14 @@
         flex-grow: 1;
         .flex-row;
         .align-center;
+    }
+    .animate{
+        transition: all 0.7s ease-in-out, opacity 0.5s ease-in-out;
+        opacity: 1;
+    }
+    .noanimate{
+        transform: translateX(105px);
+        opacity: 0;
     }
 
     .user-cont {
