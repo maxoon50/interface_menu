@@ -3,7 +3,7 @@
         <div id="container">
             <ContentsModal v-for="(elt, index) in nbreRow"
                            class="contents"
-                           :categorie="'channel'"
+                           :categorie="'cardModal'"
                            :key="index"
                            :data="dataSource.slice(getIndex(index),(index+1)*3)"
                            ref="contents"

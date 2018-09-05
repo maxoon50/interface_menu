@@ -11,14 +11,14 @@
 
 
 <script>
-    import Channel from '../cards/Channel.vue';
+    import CardModal from './cards/CardModal.vue';
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import {navigationState} from "../../states/navigationState";
 
     export default {
         name: "ContentsModal",
         components: {
-            Channel
+            CardModal
         },
         mixins: [mixinEltWithChild],
         props: ['categorie', 'index', "data"],
