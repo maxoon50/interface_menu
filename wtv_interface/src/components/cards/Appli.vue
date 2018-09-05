@@ -35,4 +35,8 @@
         background-size: cover;
         background-clip: padding-box;
     }
+
+    .backAppli:last-of-type {
+        opacity: 0;
+    }
 </style>

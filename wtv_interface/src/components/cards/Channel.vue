@@ -104,4 +104,8 @@
             text-indent: -150%;
         }
     }
+    .globalChan:last-of-type {
+        opacity: 0;
+    }
+
 </style>
