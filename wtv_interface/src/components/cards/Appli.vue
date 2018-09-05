@@ -11,6 +11,27 @@ import { mixinEltWithoutChild } from "../../mixins/mixinEltWithoutChild";
 export default {
   props: ["content"],
   mixins: [mixinEltWithoutChild],
+  methods: {
+    initListeners: function() {
+      window.addEventListener("keydown", this.listener);
+    },
+    removeListeners: function() {
+      window.removeEventListener("keydown", this.listener);
+    },
+    isFocus: function() {
+      this.focused = true;
+      this.initListeners()
+    },
+    removeFocus: function() {
+      this.focused = false;
+     this.removeListeners()
+    },
+    listener: function(event) {
+        if (event.key === 'Enter') {
+                window.location = this.content.url
+        }
+    }
+  },
   created() {},
   computed: {
     style() {
