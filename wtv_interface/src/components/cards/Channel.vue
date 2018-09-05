@@ -2,7 +2,7 @@
     <transition>
         <div class="globalChan" :class="{focusborder: focused}">
             <div class="view" :style="style">
-                <video v-if="havePlayer" class="vid" :class="{hide: !playVideo}" ref="video">
+                <video v-if="havePlayer" class="vid" :class="{hide: !playVideo}" ref="video" loop>
                     <source v-bind:src='getVideo()' type="video/mp4">
                 </video>
             </div>
@@ -74,11 +74,6 @@
     @import "~normalize.css";
     @import "../../assets/style/style.less";
 
-    .globalChan {
-        height: 29%;
-        width: 80%;
-        margin: 8% 10% 0% 10%;
-    }
 
     .vid {
         height: 100%;
