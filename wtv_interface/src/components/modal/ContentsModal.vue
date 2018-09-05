@@ -1,5 +1,5 @@
 <template>
-    <div class="cont-chan">
+    <div class="cont-modal">
         <component v-for="(elt,index) in data"
                    :key="index"
                    v-bind:is="categorie"
@@ -51,9 +51,7 @@
                 }
                 this.giveFocus();
             },
-            listener: function ({
-                                    code
-                                }) {
+            listener: function ({code}) {
                 {
                     switch (code) {
                         case 'ArrowDown':
@@ -75,11 +73,7 @@
 </script>
 
 <style scoped>
-    .contents {
-        width: 25%;
-    }
-
-    .little {
-        flex-grow: 1;
-    }
+  .cont-modal{
+      width: 15%;
+  }
 </style>

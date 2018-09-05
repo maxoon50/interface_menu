@@ -146,7 +146,6 @@
     #main {
         position: relative;
         height: 70%;
-        border: 1px solid grey;
         .flex-row;
     }
 

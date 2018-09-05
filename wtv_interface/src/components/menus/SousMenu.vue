@@ -89,7 +89,6 @@
 
     #sub-menu {
         height: 10%;
-        border: 1px solid grey;
         display: flex;
         flex-direction: row;
     }

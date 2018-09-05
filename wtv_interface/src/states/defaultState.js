@@ -4,17 +4,17 @@ export const defaultState =new Vue({
         contents:[
             {
                 'title': 'Offline',
-                'img': 'offline.png',
+                'img': 'offline.jpg',
                 'id': 850
             },
             {
                 'title': 'Offline',
-                'img': 'offline.png',
+                'img': 'offline.jpg',
                 'id': 851
             },
             {
                 'title': 'Offline',
-                'img': 'offline.png',
+                'img': 'offline.jpg',
                 'id': 852
             },
 

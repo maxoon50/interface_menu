@@ -87,7 +87,6 @@
         align-items: center;
         flex-direction: column;
         height: 10%;
-        border: 1px solid grey;
         padding: 0;
     }
 

@@ -2,7 +2,6 @@
     <div id="modal" class="p-sm flex-column" :class="{hide: !navigationState.modalOpened}">
         <div id="container">
             <ContentsModal v-for="(elt, index) in nbreRow"
-                           class="contents"
                            :categorie="'cardModal'"
                            :key="index"
                            :data="dataSource.slice(getIndex(index),(index+1)*3)"
