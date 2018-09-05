@@ -78,7 +78,7 @@
         -moz-osx-font-smoothing: grayscale;
         padding: 2% 2% 2% 2%;
         box-sizing: border-box;
-        background-image: url('/imgs/stanislas.jpg');
+        background-image: url('/imgs/galet_backg.png');
         background-repeat: no-repeat center fixed;
         background-size: cover;
     }

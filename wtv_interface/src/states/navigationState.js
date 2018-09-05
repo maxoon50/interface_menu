@@ -66,7 +66,7 @@ export let navigationState = new Vue({
            // selon this.menuChanged reçu envoie de tableau de items pour sous-menu
             //comme ce component n'a qu'une ligne on remove les listeners directement au up & down
             switch (this.menuChanged) {
-                case 'MEDIA CENTER' :
+                case 'HOME' :
                     EventBus.$emit('MenuChanged', [this.menuHome, this.menuChanged])
                     break;
                 default :

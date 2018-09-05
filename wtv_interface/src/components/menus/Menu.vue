@@ -1,9 +1,15 @@
 <template>
     <div id="main-menu">
-        <transition-group name="slide" tag="ul">
+        <!-- name="slide"  -->
+        <transition-group 
+        name="menu-page"
+        tag="ul"
+        appear
+        >
             <li class="menu-page" ref="contents"
                 v-for="(page, index) in pages"
-                :key="page">{{page}}
+                :key="page"
+                :data-index="index">{{page}}
             </li>
         </transition-group>
         <div id="focusDiv"></div>
@@ -66,7 +72,8 @@
                 }
             },
             mounted() {
-               
+               $el === document.getElementById('main-menu')
+                console.log($el)
             }
             //     ///----------Fin Méthodes Navigation------///
             // },
@@ -92,12 +99,12 @@
         width: 100%;
     }
 
-    li.menu-page {
+    .menu-page {
         box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex: 0 0 10em;
+        flex: 0 1 10em;
         list-style: none;
         text-decoration: none;
         font-weight: bold;
@@ -106,15 +113,43 @@
         cursor: pointer;
         left: 50%;
         right: 20%;
-        transition: transform 1s;
+        opacity: 0.5; 
+        backface-visibility: hidden;
+        z-index: 1;
+
+        /* &-move {transition: all 1s ease-out},
+        &-enter-active {transition: all 1s ease-out},
+        &-leave-active { opacity: 0;position: absolute;}
+        &-enter,&-leave-to { opacity: 0 } */
+
+        /* transition: all 1s; */
     }
 
-    li.menu-page[data-v-664b5cca] {
-        opacity: 0.5;
+    /* backface-visibility: hidden => will ensure silky 60fps transitions and avoid fuzzy text rendering 
+    during transformations by tricking the browser into leveraging hardware acceleration.*/
+    .menu-page-move {transition: all 1s;}  
+    .menu-page-move:first-of-type {
+        opacity: 0!important;
+        /* position:absolute; */
+        z-index: -5;
     }
+    .menu-page-move:last-of-type {
+        opacity: 0!important;
+        /* position:absolute; */
+        z-index: -5;
+    }
+    /* appearing */
+    /* .menu-page-enter-active {opacity: 0!important;}  */
+    /* disappearing */
+    /* .menu-page-leave-active {
+        opacity: 0!important;
+        position: absolute;}
+    /* appear at / disappear to */
+    /*.menu-page-enter {opacity: 0!important;}
+    .menu-page-leave-to { opacity: 0!important;} */
 
-    .visible {
-        opacity: 0;
+    li.menu-page:nth-child(4) {
+        opacity: 1;
     }
 
     #focusDiv {
@@ -127,10 +162,6 @@
         width: 10%;
         height: 7%;
         position: absolute;
-    }
-
-    li.menu-page:nth-child(4) {
-        opacity: 1;
     }
 
 
