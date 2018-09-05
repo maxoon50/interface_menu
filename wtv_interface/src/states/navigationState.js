@@ -3,6 +3,8 @@ import {EventBus} from "../main";
 import { myChannelState } from "./myChannelState";
 import { myContentState } from "./myContentState";
 import { myFilmState } from "./myFilmState";
+import { myExtraState } from "./myExtraState";
+import { myAppState } from "./myAppState";
 import { GLOBALS } from "../const/globals";
 
 export let navigationState = new Vue({
@@ -27,7 +29,7 @@ export let navigationState = new Vue({
         movieIndex : 0,
         extraIndex : 0,
         menuChanged: null,
-        menuHome: ['channels', 'contents', 'apps', 'films', 'channels'],
+        menuHome: ['channels', 'contents', 'apps', 'films', 'extras'],
         menuPage: ['change1', 'change2', 'change3', 'change4', 'change5']
     },methods:{
 
@@ -45,10 +47,13 @@ export let navigationState = new Vue({
                     this.dataSource = myContentState;
                     break;
                 case 'apps':
-                    this.dataSource = myChannelState;
+                    this.dataSource = myAppState;
                     break;
                 case 'films':
                     this.dataSource = myFilmState;
+                    break;
+                case 'extras':
+                    this.dataSource = myExtraState;
                     break;
             }
         },
