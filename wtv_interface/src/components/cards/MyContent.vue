@@ -66,18 +66,55 @@
         },
 
     };
+  },
+  mixins: [mixinEltWithoutChild],
+  created() {},
+  methods: {
+    isFocus: function() {
+      this.focused = true;
+      this.timeOut = setTimeout(this.playVid, 1500);
+    },
+    removeFocus: function() {
+      clearTimeout(this.timeOut);
+      this.focused = false;
+      this.stopVid();
+    },
+    getImg() {
+      return "http://localhost:8081/imgs/" + this.content.img;
+    },
+    getVideo() {
+      return "http://localhost:8081/videos/" + this.content.video;
+    },
+    playVid() {
+      this.playVideo = true;
+      this.$refs.video.play();
+      this.subtitle = this.content.sub;
+    },
+    stopVid() {
+      this.playVideo = false;
+      this.$refs.video.pause();
+      this.subtitle = this.content.title;
+    }
+  },
+  computed: {
+    style() {
+      return "background-image: url(/imgs/" + this.content.img + ")";
+    }
+  },
+  mounted() {}
+};
 </script>
 
 <style lang="less">
     @import "~normalize.css";
     @import "../../assets/style/style.less";
 
-    .globalChan {
-        //border : solid 5px black;
-        height: 29%;
-        width: 80%;
-        margin: 8% 10% 0% 10%;
-    }
+.globalChan {
+  //border : solid 5px black;
+  height: 29%;
+  width: 80%;
+  margin: 8% 10% 0% 10%;
+}
 
     .vid {
         height: 100%;
