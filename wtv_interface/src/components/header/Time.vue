@@ -44,5 +44,6 @@
         .align-center;
         margin-left: 30px;
         margin-right: 20px;
+        z-index: 5;
     }
 </style>
