@@ -1,14 +1,11 @@
 <template>
     <div class="cont-chan">
-        <transition-group name="vertical-slide" tag="span" class="cont-animate" mode="in-out">
+        <transition-group name="vertical-slide" tag="div" class="cont-animate">
             <component v-for="(elt,index) in data"
                        :key="elt.id"
                        v-bind:is="categorie"
                        :content="elt"
                        ref="contents"
-                        v-on:before-enter="beforeEnter"
-                        v-on:enter="enter"
-                        v-on:leave="leave"
                        :havePlayer=true
             >
             </component>
@@ -44,18 +41,6 @@
             }
         },
         methods: {
-            beforeEnter: function (el) {
-                el = this.$refs.contents
-                el.style.opacity = 1
-            },
-            enter: function (el) {
-                el = this.$refs.contents
-                el.style.opacity = 0.5
-            },
-            leave: function (el) {
-                el = this.$refs.contents
-                el.style.opacity = 1
-            },
             ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 // on reset l'index du SubMenu
@@ -173,32 +158,5 @@
         .full-width;
         overflow: hidden;
     }
-
-    // @keyframes fadeIn {
-    // from {
-    //     opacity: 0;
-    // }
-    // to {
-    //     opacity: 1;
-    // }
-    // }
-    // .fadeIn {
-    // animation-name: fadeIn;
-    // }
-
-    // @keyframes fadeOut {
-    // from {
-    //     opacity: 1;
-    // }
-    // to {
-    //     opacity: 0;
-    // }
-    // }
-    // .fadeOut {
-    // animation-name: fadeOut;
-    // }
-    // .fade-move {
-    // transition: transform 0.3s ease-out;
-    // }
 
 </style>

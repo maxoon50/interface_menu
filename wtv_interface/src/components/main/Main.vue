@@ -6,17 +6,17 @@
          => les datas en provenance des states
          => le ref contents, ref 'générique' pour récupérer un array de composants :: this.$refs.contents
         -->
-        <template v-for="(child, index) in contentTypes">
-            <component :is="'contents'"
-                       :key="index"
-                       :categorie="child.type"
-                       :data="child.dataSource"
-                       :nbreItemsShowed="child.nbreItemsShowed"
-                       ref="contents"
-                       :index="index"
-            >
-            </component>
-        </template>
+            <template v-for="(child, index) in contentTypes">
+                <component :is="'contents'"
+                        :key="index"
+                        :categorie="child.type"
+                        :data="child.dataSource"
+                        :nbreItemsShowed="child.nbreItemsShowed"
+                        ref="contents"
+                        :index="index"
+                >
+                </component>
+            </template>
     </main>
 </template>
 
@@ -118,7 +118,30 @@
                             this.setFocus(-1);
                     }
                 }
+            },
+            // essai API Youtube
+            async videoYoutube() {   
+                try {
+                    let films = await fetch('https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=AIzaSyBGnQO5k02QBDTuMX-gmuVEiKA7_kfosOk&part=snippet')
+                    filmsJson = await films.json();
+                    console.log(this.myFilmState.items[0])
+
+                    jsonMovies.forEach(({id, name, srcImg}) => movieFiltered.push({id, name, srcImg}))
+                    // return this.myFilmState
+                } 
+                catch(e) {
+                    console.error(e)
+                }
             }
+            // .then(resp => resp.json())
+                // .then((data) => {
+                //     console.log(data);
+                //     this.myFilmState = data.items[0];
+                //     console.log(this.myFilmState);
+                // });
+            // this.myFilmState.contents = films
+            // console.log(films)
+
             ///---------- Fin Méthodes Navigation-------------///
         },
         mounted() {
@@ -134,6 +157,7 @@
                 }
             });
             this.contentTypes = this.contentTypesHome;
+            this.videoYoutube() 
         },
 
     }
@@ -162,4 +186,12 @@
         box-sizing: border-box;
         border: 1px solid grey;
     }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+
 </style>
