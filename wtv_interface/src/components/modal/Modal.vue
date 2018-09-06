@@ -2,7 +2,7 @@
     <div id="modal" class="p-sm flex-column" :class="{hide: !navigationState.modalOpened}">
         <div id="container">
             <ContentsModal v-for="(elt, index) in nbreRow"
-                           :categorie="'AppliModal'"
+                           :categorie="categorie"
                            :key="index"
                            :data="dataSource.slice(getIndex(index),(index+1)*3)"
                            ref="contents"
@@ -36,7 +36,8 @@
                 myContentState,
                 nbreRow: 0,
                 navigationState,
-                dataSource : myContentState.contents
+                dataSource : myContentState.contents,
+                categorie : 'ChannelModal'
             }
         },
         methods: {
@@ -93,7 +94,9 @@
         },
         mounted() {
             EventBus.$on('ModalOpened', (source) => {
-                this.dataSource = source.contents;
+                console.log(source)
+                this.dataSource = source.data.contents;
+                this.categorie = source.type;
                 this.nbreRowCalculate();
                 this.isFocus();
             })

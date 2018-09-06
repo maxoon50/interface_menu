@@ -12,13 +12,21 @@
 
 <script>
     import AppliModal from './cards/AppliModal.vue';
+    import MyContentModal from './cards/MyContentModal.vue';
+    import ChannelModal from './cards/ChannelModal.vue';
+    import ExtraModal from './cards/ExtraModal.vue';
+    import MovieModal from './cards/MovieModal.vue';
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import {navigationState} from "../../states/navigationState";
 
     export default {
         name: "ContentsModal",
         components: {
-            AppliModal
+            AppliModal,
+            MyContentModal,
+            ChannelModal,
+            ExtraModal,
+            MovieModal
         },
         mixins: [mixinEltWithChild],
         props: ['categorie', 'index', "data"],

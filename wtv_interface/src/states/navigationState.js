@@ -41,19 +41,19 @@ export let navigationState = new Vue({
         contentModal(){
             switch (this.contentModal){
                 case 'channels':
-                    this.dataSource = myChannelState;
+                    this.dataSource = {data:myChannelState, type: 'ChannelModal'};
                     break;
                 case 'contents':
-                    this.dataSource = myContentState;
+                    this.dataSource =  {data:myContentState, type: 'MyContentModal'};
                     break;
                 case 'apps':
-                    this.dataSource = myAppState;
+                    this.dataSource =  {data:myAppState, type: 'MyContentModal'};
                     break;
                 case 'films':
-                    this.dataSource = myFilmState;
+                    this.dataSource =  {data:myFilmState, type: 'MyContentModal'};
                     break;
                 case 'extras':
-                    this.dataSource = myExtraState;
+                    this.dataSource =  {data:myExtraState, type: 'MyContentModal'};
                     break;
             }
         },
