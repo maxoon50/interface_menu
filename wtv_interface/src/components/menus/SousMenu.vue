@@ -95,6 +95,7 @@
 
     .item-menu {
         .large-row;
+        z-index: 11;
         display: flex;
         flex-direction: column;
         align-items: center;

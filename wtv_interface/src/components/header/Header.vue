@@ -44,6 +44,7 @@
     #logo{
         .flex-row;
         .align-center;
+        z-index: 10;
         img{
             height: 100%;
         }

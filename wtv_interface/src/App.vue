@@ -1,5 +1,15 @@
 <template>
     <div id="app">
+        <img src="/imgs/stanislas.jpg" style="
+    position:  absolute;
+    height:  100%;
+    width:  100%;
+    top: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    filter: blur(10px);
+    z-index: 0;
+"/>
         <template v-for="child in componentList">
             <component :is="child" :key="child" ref="contents"></component>
         </template>
@@ -78,19 +88,20 @@
         -moz-osx-font-smoothing: grayscale;
         padding: 2% 2% 2% 2%;
         box-sizing: border-box;
-        background-image: url('/imgs/stanislas.jpg');
-        background-repeat: no-repeat center fixed;
-        background-size: cover;
+
     }
-    .focus{
+
+    .focus {
         background-color: lime;
     }
-    .focusborder{
+
+    .focusborder {
         -moz-box-shadow: 0 0 10px lime;
         -webkit-box-shadow: 0 0 10px lime;
         box-shadow: 0 0 10px lime;
         transition: all 0.3s;
     }
+
     .hide {
         display: none !important;
     }
