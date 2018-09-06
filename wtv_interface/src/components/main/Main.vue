@@ -162,18 +162,18 @@
     @import "~normalize.css";
     @import "../../assets/style/variables.less";
 
-    #main {
-        position: relative;
-        height: 70%;
-        .flex-row;
-    }
+#main {
+  position: relative;
+  height: 70%;
+  .flex-row;
+}
 
-    .contents {
-        .full-height;
-        width: 23%;
-        box-sizing: border-box;
-        border: 1px solid grey;
-    }
+.contents {
+  .full-height;
+  width: 23%;
+  box-sizing: border-box;
+  border: 1px solid grey;
+}
 
     .contApp {
         .full-height;
