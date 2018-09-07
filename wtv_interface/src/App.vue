@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <img src="/imgs/stanislas.jpg" style="
+        <img src="/imgs/galet_backg.png" style="
     position:  absolute;
     height:  100%;
     width:  100%;
