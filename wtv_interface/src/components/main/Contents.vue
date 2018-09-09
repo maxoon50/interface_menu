@@ -21,7 +21,7 @@
     import MyContent from '../cards/MyContent';
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {navigationState} from "../../states/navigationState";
-
+    import { EventBus } from "../../main";
 
     export default {
         components: {
@@ -128,8 +128,6 @@
                     elt['index'] = index;
                     return elt;})
         },
-        mounted() {
-        }
     }
 </script>
 

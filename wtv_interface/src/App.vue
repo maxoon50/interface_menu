@@ -22,7 +22,7 @@
     import SousMenu from './components/menus/SousMenu.vue';
     import Main from './components/main/Main.vue';
     import {mixinEltWithChild} from './mixins/mixinEltWithChild';
-import { STORE} from "./states/store";
+    import {STORE} from "./states/store";
 
     export default {
         name: 'app',
@@ -67,7 +67,7 @@ import { STORE} from "./states/store";
         mounted: function () {
             this.initListeners();
             this.isFocus(1);
-        },  beforeCreate() {
+        }, beforeCreate() {
             let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             let myInit = {
