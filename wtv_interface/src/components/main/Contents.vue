@@ -1,12 +1,17 @@
 <template>
     <div class="cont-chan">
-        <transition-group name="vertical-slide" tag="div" class="cont-animate">
-            <component v-for="(elt,index) in data"
+        <transition-group name="vertical-slide" tag="span" class="cont-animate" mode="in-out">
+            <component v-if="cards.length>0" v-for="(elt,index) in cards"
                        :key="elt.id"
                        v-bind:is="categorie"
                        :content="elt"
                        ref="contents"
-                       :havePlayer="true"
+                        v-on:before-enter="beforeEnter"
+                        v-on:enter="enter"
+                        v-on:leave="leave"
+                       :havePlayer=true
+                       :id="elt.id"
+
             >
             </component>
         </transition-group>
@@ -32,15 +37,46 @@
             Extra
         },
         mixins: [mixinEltWithChild],
-        props: ['categorie', 'data', 'index', 'nbreItemsShowed'],
+        props: ['categorie', 'contents', 'index', 'nbreItemsShowed'],
         data: function () {
             return {
                 animatedContent: false,
                 showedItems: 0,
                 indexShowedItems: [0, 1, 2],
+                init : false
             }
         },
+        computed :{
+            // accesseur
+            cards :{
+
+            get: function () {
+                return this.contents;
+
+            },
+            // mutateur
+            set: function (newValue) {
+                this.contents = newValue;
+            }
+        }
+
+
+        },
         methods: {
+            beforeEnter: function () {
+                this.$refs.contents.style.opacity = 1
+            },
+            enter: function () {
+                this.$refs.contents.style.opacity = 0.5
+            },
+            leave: function () {
+                this.$refs.contents.style.opacity = 1
+            },
+            giveCardsIndex: function () {
+                this.cards = this.cards.map((elt, index) => {
+                    elt['index'] = index;
+                    return elt;});
+            },
             ///----------Méthodes Navigation-------------///
             isFocus: function () {
                 // on reset l'index du SubMenu
@@ -113,21 +149,26 @@
             changeFocus() {
                 /* ici on remplit un array des trois index qui sont montrés à l'écran*/
                 this.indexShowedItems = [];
-                // const first = this.pages.shift()
-                // this.pages = this.pages.concat(first)
-                this.data.push(this.data.shift());
+                this.cards.push(this.cards.shift());
                 for(let i = 0; i< 3; i++){
-                    this.indexShowedItems.push(this.data[i].index)
+                    this.indexShowedItems.push(this.cards[i].index)
                 }
             }
 
         },
-        created() {
+        mounted(){
             // ici on ajoute un index pour faciliter le traitement des animations
-            this.data.map((elt, index) => {
-                    elt['index'] = index;
-                    return elt;})
-        },
+            if(!this.init){
+                this.giveCardsIndex();
+                this.init = true;
+            }
+            EventBus.$on('MenuChanged', ()=>{
+                this.giveCardsIndex();
+                this.indexShowedItems = [0, 1, 2];
+            })
+        }
+
+
     }
 </script>
 

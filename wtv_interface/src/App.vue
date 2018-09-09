@@ -10,7 +10,7 @@
     filter: blur(10px);
     z-index: 0;
 "/>
-        <template v-for="child in componentList">
+        <template v-if="okData" v-for="child in componentList">
             <component :is="child" :key="child" ref="contents"></component>
         </template>
     </div>
@@ -36,6 +36,7 @@
         data: function () {
             return {
                 componentList: ['app-header', 'app-menu', 'app-sous-menu', 'app-main'],
+                okData: false
             }
         },
         methods: {
@@ -64,10 +65,7 @@
                 }
             },
         },
-        mounted: function () {
-            this.initListeners();
-            this.isFocus(1);
-        }, beforeCreate() {
+        beforeCreate() {
             let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             let myInit = {
@@ -86,8 +84,13 @@
                 STORE.appliContents = res[0].user.preferences.apps;
                 STORE.movieContents = res[0].user.preferences.films;
                 STORE.extraContents = res[0].user.preferences.extras;
+                this.okData = true;
             })
-        }
+        },
+        updated(){
+            this.initListeners();
+            this.isFocus(1);
+        },
     }
 </script>
 

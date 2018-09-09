@@ -12,7 +12,6 @@ export const STORE =new Vue({
     },
     watch:{
         channelContents: function(){
-            console.log('updated')
             EventBus.$emit('updateData', {categorie : GLOBALS.CHANNELS  ,datas : this.channelContents, });
         },
         myContentContents: function(){

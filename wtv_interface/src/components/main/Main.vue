@@ -6,11 +6,11 @@
          => les datas en provenance des states
          => le ref contents, ref 'générique' pour récupérer un array de composants :: this.$refs.contents
         -->
-        <template v-for="(child, index) in contents">
+        <template v-if="contents.length>0" v-for="(child, index) in contents">
             <component :class="{opacFull: !hideIt}" id="opac" :is="'contents'"
                        :key="index"
                        :categorie="child.type"
-                       :data="child.dataSource"
+                       v-bind:contents="child.dataSource"
                        :nbreItemsShowed="child.nbreItemsShowed"
                        ref="contents"
                        :index="index"

@@ -36,7 +36,6 @@ export const mixinEltWithChild = {
             this.giveFocus();
         },
         giveFocus: function () {
-
             // ici on vérifie s'il y a un last focused et on le remove au besoin
             if(this.lastFocused != null){
                 this.lastFocused.removeFocus();
@@ -53,5 +52,6 @@ export const mixinEltWithChild = {
         removeListeners: function() {
             window.removeEventListener('keydown', this.listener);
         },
-    }
+    },
+
 }

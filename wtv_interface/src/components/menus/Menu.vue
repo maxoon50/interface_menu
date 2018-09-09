@@ -1,11 +1,10 @@
 <template>
     <div id="main-menu">
         <!-- name="slide"  -->
-        <transition-group 
-        name="menu-page"
-        tag="ul"
-        appear
-        >
+        <transition-group
+                name="menu-page"
+                tag="ul"
+                appear>
             <li class="menu-page" ref="contents"
                 v-for="(page, index) in pages"
                 :key="page"
@@ -19,6 +18,7 @@
 <script>
     import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {navigationState} from "../../states/navigationState";
+
     export default {
         components: {},
         data() {
@@ -30,11 +30,11 @@
         methods: {
             ///----------Méthodes Animation-------------///
             next() {
-                const first = this.pages.shift()
+                const first = this.pages.shift();
                 this.pages = this.pages.concat(first)
             },
             previous() {
-                const last = this.pages.pop()
+                const last = this.pages.pop();
                 this.pages = [last].concat(this.pages)
             },
             isFocus() {
@@ -61,22 +61,16 @@
                     //comme ce component n'a qu'une ligne on remove les listeners directement au up & down
                     switch (code) {
                         case 'ArrowRight' :
-                            this.setFocus(-1)
-                            this.previous()
+                            this.setFocus(-1);
+                            this.previous();
                             break;
                         case 'ArrowLeft' :
-                            this.setFocus(1)
-                            this.next()
+                            this.setFocus(1);
+                            this.next();
                             break;
                     }
                 }
             },
-            mounted() {
-               $el === document.getElementById('main-menu')
-                console.log($el)
-            }
-            //     ///----------Fin Méthodes Navigation------///
-            // },
         },
     }
 </script>
@@ -112,7 +106,7 @@
         cursor: pointer;
         left: 50%;
         right: 20%;
-        opacity: 0.5; 
+        opacity: 0.5;
         backface-visibility: hidden;
         z-index: 1;
 
@@ -126,17 +120,22 @@
 
     /* backface-visibility: hidden => will ensure silky 60fps transitions and avoid fuzzy text rendering 
     during transformations by tricking the browser into leveraging hardware acceleration.*/
-    .menu-page-move {transition: all 1s;}  
+    .menu-page-move {
+        transition: all 1s;
+    }
+
     .menu-page-move:first-of-type {
-        opacity: 0!important;
+        opacity: 0 !important;
         /* position:absolute; */
         z-index: -5;
     }
+
     .menu-page-move:last-of-type {
-        opacity: 0!important;
+        opacity: 0 !important;
         /* position:absolute; */
         z-index: -5;
     }
+
     /* appearing */
     /* .menu-page-enter-active {opacity: 0!important;}  */
     /* disappearing */
