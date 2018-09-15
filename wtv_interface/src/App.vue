@@ -22,7 +22,7 @@
     import SousMenu from './components/menus/SousMenu.vue';
     import Main from './components/main/Main.vue';
     import {mixinEltWithChild} from './mixins/mixinEltWithChild';
-    import {STORE} from "./states/store";
+    import RestResource from "./services/dataService";
 
     export default {
         name: 'app',
@@ -66,28 +66,16 @@
             },
         },
         beforeCreate() {
-            let myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            let myInit = {
-                method: 'GET',
-                headers: myHeaders,
-                mode: 'cors',
-                cache: 'default'
-            };
-
-            fetch('http://localhost:8005/users', myInit)
-                .then(function (response) {
-                    return response.json();
-                }).then((res) => {
-                STORE.channelContents = res[0].user.preferences.channels;
-                STORE.myContentContents = res[0].user.preferences.myContents;
-                STORE.appliContents = res[0].user.preferences.apps;
-                STORE.movieContents = res[0].user.preferences.films;
-                STORE.extraContents = res[0].user.preferences.extras;
-                this.okData = true;
-            })
+            let api = new RestResource();
+            api.getUsers()
+                .then(res => {
+                    this.okData = true;
+                })
+                .catch(err => {
+                    alert('une erreur est survenue, merci de contacter l\'administrateur \n' + err);
+                });
         },
-        updated(){
+        updated() {
             this.initListeners();
             this.isFocus(1);
         },
