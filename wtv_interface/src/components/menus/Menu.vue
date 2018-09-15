@@ -109,13 +109,6 @@
         opacity: 0.5;
         backface-visibility: hidden;
         z-index: 1;
-
-        /* &-move {transition: all 1s ease-out},
-        &-enter-active {transition: all 1s ease-out},
-        &-leave-active { opacity: 0;position: absolute;}
-        &-enter,&-leave-to { opacity: 0 } */
-
-        /* transition: all 1s; */
     }
 
     /* backface-visibility: hidden => will ensure silky 60fps transitions and avoid fuzzy text rendering 
@@ -136,15 +129,6 @@
         z-index: -5;
     }
 
-    /* appearing */
-    /* .menu-page-enter-active {opacity: 0!important;}  */
-    /* disappearing */
-    /* .menu-page-leave-active {
-        opacity: 0!important;
-        position: absolute;}
-    /* appear at / disappear to */
-    /*.menu-page-enter {opacity: 0!important;}
-    .menu-page-leave-to { opacity: 0!important;} */
 
     li.menu-page:nth-child(4) {
         opacity: 1;

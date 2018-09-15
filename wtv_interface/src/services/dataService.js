@@ -59,7 +59,6 @@ class RestResource {
                     return response.json();
                 })
                 .then((res) => {
-                    console.log(res)
                     STORE.modalChannelContents = res[0].channels;
                     resolve(true);
                 })

@@ -5,7 +5,7 @@ import { myContentState } from "./myContentState";
 import { myFilmState } from "./myFilmState";
 import { myExtraState } from "./myExtraState";
 import { myAppState } from "./myAppState";
-import { GLOBALS } from "../const/globals";
+import {STORE} from "./store";
 
 export let navigationState = new Vue({
 
@@ -41,7 +41,7 @@ export let navigationState = new Vue({
         contentModal(){
             switch (this.contentModal){
                 case 'channels':
-                    this.dataSource = {data:myChannelState, type: 'ChannelModal'};
+                    this.dataSource = {data:STORE.modalChannelContents, type: 'ChannelModal'};
                     break;
                 case 'contents':
                     this.dataSource =  {data:myContentState, type: 'MyContentModal'};
