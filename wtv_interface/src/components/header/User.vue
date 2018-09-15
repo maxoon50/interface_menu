@@ -31,7 +31,6 @@
         mixins: [mixinEltWithChild],
         methods: {
             isFocus(){
-              console.log('launch animation')
                 this.focused = true;
                 this.getFocus();
             },

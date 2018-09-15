@@ -4,6 +4,7 @@ import {GLOBALS} from "../const/globals";
 
 export const STORE =new Vue({
     data: {
+        currentUser: "Antoine la guez",
         channelContents:[],
         myContentContents:[],
         appliContents:[],
