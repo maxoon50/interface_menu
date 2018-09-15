@@ -66,14 +66,20 @@
             },
         },
         beforeCreate() {
-            let api = new RestResource();
-            api.getUsers()
+            RestResource.storeUsers()
                 .then(res => {
                     this.okData = true;
                 })
                 .catch(err => {
                     alert('une erreur est survenue, merci de contacter l\'administrateur \n' + err);
                 });
+            RestResource.storeChannels()
+                .then(res=>{
+
+                })
+                .catch(err=>{
+
+                })
         },
         updated() {
             this.initListeners();

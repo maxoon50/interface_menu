@@ -2,7 +2,7 @@ import {STORE} from "../states/store";
 
 const API_ADRESS = "http://localhost:8005/";
 
-export default class RestResource {
+class RestResource {
 
     constructor(){
 
@@ -12,7 +12,7 @@ export default class RestResource {
     * and if the promise is resolved, store the users in the STORE object
     * @return boolean
      */
-    getUsers() {
+    storeUsers() {
 
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -43,4 +43,32 @@ export default class RestResource {
 
     }
 
-};
+    storeChannels() {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        let myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        return new Promise((resolve, reject)=>{
+            fetch(`${API_ADRESS}channels`, myInit)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then((res) => {
+                    console.log(res)
+                    STORE.modalChannelContents = res[0].channels;
+                    resolve(true);
+                })
+                .catch( err =>{
+                    reject(err);
+                })
+        })
+    }
+
+}
+
+export default new RestResource();

@@ -9,6 +9,8 @@ export const STORE =new Vue({
         appliContents:[],
         movieContents:[],
         extraContents:[],
+        modalChannelContents:[],
+        modalAppsContents:[],
     },
     watch:{
         channelContents: function(){
