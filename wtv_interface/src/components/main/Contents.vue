@@ -2,7 +2,7 @@
     <div class="cont-chan">
         <transition-group name="vertical-slide" tag="span" class="cont-animate" mode="in-out">
             <component v-if="cards.length>0" v-for="(elt,index) in cards"
-                       :key="elt.id"
+                       :key="elt._id"
                        v-bind:is="categorie"
                        :content="elt"
                        ref="contents"

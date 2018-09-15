@@ -1,19 +1,22 @@
 import {STORE} from "../states/store";
 
 const API_ADRESS = "http://localhost:8005/";
-
+const USERDEFAULT = "Antoine la guez";
 class RestResource {
 
     constructor(){
 
     }
-    /*
+    /**
     * Get the users form the API,
-    * and if the promise is resolved, store the users in the STORE object
-    * @return boolean
+    * If the promise is resolved, store the users in the STORE object
+    * @returns boolean
      */
-    storeUsers() {
+    storeUsers(name) {
 
+        if(!name){
+            name = USERDEFAULT;
+        }
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         let myInit = {
@@ -24,16 +27,16 @@ class RestResource {
         };
 
         return new Promise((resolve, reject)=>{
-            fetch(`${API_ADRESS}users`, myInit)
+            fetch(`${API_ADRESS}user/${name}`, myInit)
                 .then(function (response) {
                     return response.json();
                 })
                 .then((res) => {
-                    STORE.channelContents = res[0].user.preferences.channels;
-                    STORE.myContentContents = res[0].user.preferences.myContents;
-                    STORE.appliContents = res[0].user.preferences.apps;
-                    STORE.movieContents = res[0].user.preferences.films;
-                    STORE.extraContents = res[0].user.preferences.extras;
+                    STORE.channelContents = res.preferences.channels;
+                    STORE.myContentContents = res.preferences.myContents;
+                    STORE.appliContents = res.preferences.apps;
+                    STORE.movieContents = res.preferences.films;
+                    STORE.extraContents = res.preferences.extras;
                     resolve(true);
                 })
                 .catch( err =>{
@@ -43,6 +46,10 @@ class RestResource {
 
     }
 
+    /**
+     * Store in global STORE the channels for the channels modal
+     * @returns {Promise<any>}
+     */
     storeChannels() {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");

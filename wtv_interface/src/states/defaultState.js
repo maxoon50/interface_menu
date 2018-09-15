@@ -5,17 +5,17 @@ export const defaultState =new Vue({
             {
                 'title': 'Offline',
                 'img': 'offline.jpg',
-                'id': 850
+                '_id': 850
             },
             {
                 'title': 'Offline',
                 'img': 'offline.jpg',
-                'id': 851
+                '_id': 851
             },
             {
                 'title': 'Offline',
                 'img': 'offline.jpg',
-                'id': 852
+                '_id': 852
             },
 
         ]
