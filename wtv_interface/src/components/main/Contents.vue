@@ -6,7 +6,7 @@
                        v-bind:is="categorie"
                        :content="elt"
                        ref="contents"
-                       :havePlayer=true
+                       :havePlayer="true"
             >
             </component>
         </transition-group>

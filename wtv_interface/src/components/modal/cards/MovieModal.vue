@@ -2,6 +2,7 @@
     <transition>
         <div class="chan" :class="{focusborder: focused, selected: checked}">
             <div class="view" :style="style">
+               
             </div>
             <div class="sub color-bg-sub">
                 {{content.title}}

@@ -28,11 +28,13 @@ export default {
     },
     listener: function(event) {
         if (event.key === 'Enter') {
-                window.location = this.content.url
+          //window.open(this.content.url,'_blank');
+          window.location = this.content.url;
         }
     }
   },
-  created() {},
+  created() {
+  },
   computed: {
     style() {
       return "background-image: url(/imgs/" + this.content.img + ")";

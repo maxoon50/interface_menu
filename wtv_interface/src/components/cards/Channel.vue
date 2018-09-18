@@ -91,7 +91,7 @@
         animation: marquee 6s linear infinite;
     }
 
-    @-webkit-keyframes marquee {
+    @keyframes marquee {
         0% {
             text-indent: 100%;
         }

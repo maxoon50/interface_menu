@@ -1,12 +1,9 @@
 <template>
     <div class="movie" :class="{focusborder: focused}">
-        <div class="view" :style="style">
-
-            <iframe :class="{hide: !playVideo}" class="iframeVid"  ref="iframe" width="560" height="315" v-bind:src="urlVid" 
-            frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-
+        <div class="view" :style="style" :class="{playBo: havePlayer}">
+              <div :id="playerVideo"></div>
         </div>
-        <div class="sub color-bg-sub">
+        <div class="sub color-bg-sub" :class="{invisibleSub: havePlayer}">
             {{ content.title }}
         </div>
     </div>
@@ -20,14 +17,20 @@
         data() {
             return {
                 timeOut: null,
-                playVideo: false,
+                havePlayer: false,
                 subtitle: this.content.title,
-                urlVid: this.content.url
+                videoId: null,
+                state: null,
+                playerVideo: null
             };
         },
         mixins: [mixinEltWithoutChild],
         created() {
-            
+          const tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          const firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          this.playerVideo = "player"+this.content.id
         },
         computed: {
             style() {
@@ -35,24 +38,83 @@
             }
         },
         methods: {
+            onYouTubeIframeAPIReady(videoId) {
+              this.player = new YT.Player(this.playerVideo, {height: '480',width: '854',videoId: videoId, playerVars: {
+                  'color': 'white',
+                  'controls': 2,
+                  'fs': 0,
+                  'loop': 1,
+                  'modestbranding': 1,
+                  'branding': 0,
+                  'enablejsapi': 1,
+                  'origin': 'http://localhost:8080/',
+                  'rel': 0,
+                  'showinfo': 0
+                },
+                events: {
+                  'onReady': this.playVideoOnDelay,
+                  'onStateChange': this.videoPlayPause
+                }
+              });
+            },
+            playVideoOnDelay(event) {
+              this.havePlayer = true;
+              this.focused = false;
+              document.getElementsByTagName('iframe')[0].setAttribute("style", "position:absolute;top:20px;left: 60px;");
+              event.target.playVideo();
+            },
+            videoPlayPause(eventPlayer){
+              this.state = eventPlayer.target.getPlayerState();
+              document.addEventListener('keypress',event => {
+                // pause
+                switch(event.keyCode) {
+                  case 32:
+                    if (this.state == 1){
+                      eventPlayer.target.pauseVideo();
+                    } else if (this.state == 2){
+                      eventPlayer.target.playVideo();
+                    }
+                    break;
+                  // sortie video BO
+                  case 13:
+                    this.havePlayer = false;
+                    console.log(eventPlayer.target)
+                    //eventPlayer.target.destroy();
+                    this.player.destroy();
+                    this.isFocus();
+                    break;
+                }
+              });
+              // loop video
+              if (this.state == 0) {eventPlayer.target.playVideo();};
+            },
+            stopVideo() {
+              this.player.stopVideo();
+            },
+            destroyVideo() {
+              console.log('destroy')
+              this.player.destroy();
+            },
+            getVideo() {
+                return this.content.url;
+            },
             isFocus: function () {
                 this.focused = true;
+                this.videoId = this.content.videoId;
                 this.timeOut = setTimeout(()=>{
-                    this.playVideo = true;
-                    this.urlVid =  this.urlVid+'?autoplay=1';
+                    this.onYouTubeIframeAPIReady(this.videoId);
                 }, 2000);
                 this.subtitle = this.content.sub;
             },
             removeFocus: function () {
+              if(this.havePlayer){
+                this.stopVideo();
+                this.destroyVideo();
+              }
+                this.havePlayer = false;
                 this.focused = false;
                 clearTimeout(this.timeOut);
-                this.stopVid();
-            },
-            stopVid() {
-                this.playVideo = false;
-                this.urlVid = this.urlVid.replace('?autoplay=1','')
-                this.subtitle = this.content.title;
-            },
+            }
         }
     }
 </script>
@@ -73,15 +135,33 @@
             height: 90%;
             background-position: center;
         }
+        .playBo {
+          position:absolute;
+          width:100%;
+          height:100%;
+          left:0;
+          top:0;
+          background-size: 270px 446px;
+          background-color: black;
+          background-position-x: 85%;
+          animation: fadeplayer 1s ease-in;
+        }
         .sub {
             height: 7%;
+        }
+        .invisibleSub {
+          display: none;
         }
 
     }
 
-    .iframeVid {
-        height: 100%;
-        width: auto;
+    @keyframes fadeplayer {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity:1;
+      }
     }
 
     .defile {
@@ -90,7 +170,7 @@
         animation: marquee 6s linear infinite;
     }
 
-    @-webkit-keyframes marquee {
+    @keyframes marquee {
         0% {
             text-indent: 100%;
         }

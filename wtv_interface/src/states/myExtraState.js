@@ -1,5 +1,5 @@
 import Vue from 'vue'
-export const myExtraState =new Vue({
+export const myExtraState = new Vue({
     data: {
         contents:[
 
