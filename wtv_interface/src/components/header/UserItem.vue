@@ -31,7 +31,6 @@
                     STORE.currentUser = user;
                     RestResource.storeUsers(user)
                         .then(res => {
-                            console.log('ok change')
                         })
                         .catch(err => {
                             console.log(err);

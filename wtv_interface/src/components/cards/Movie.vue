@@ -78,8 +78,6 @@
                   // sortie video BO
                   case 13:
                     this.havePlayer = false;
-                    console.log(eventPlayer.target)
-                    //eventPlayer.target.destroy();
                     this.player.destroy();
                     this.isFocus();
                     break;
@@ -92,7 +90,6 @@
               this.player.stopVideo();
             },
             destroyVideo() {
-              console.log('destroy')
               this.player.destroy();
             },
             getVideo() {
