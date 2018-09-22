@@ -32,6 +32,7 @@ class RestResource {
                     return response.json();
                 })
                 .then((res) => {
+                    STORE.userPreferences = res.preferences.keywords;
                     STORE.channelContents = res.preferences.channels;
                     STORE.myContentContents = res.preferences.myContents;
                     STORE.appliContents = res.preferences.apps;

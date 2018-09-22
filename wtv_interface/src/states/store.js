@@ -5,6 +5,7 @@ import {GLOBALS} from "../const/globals";
 export const STORE =new Vue({
     data: {
         currentUser: "Antoine la guez",
+        userPreferences: [],
         channelContents:[],
         myContentContents:[],
         appliContents:[],
@@ -28,6 +29,9 @@ export const STORE =new Vue({
         },
         extraContents: function(){
             EventBus.$emit('updateData', {categorie : GLOBALS.EXTRAS  ,datas : this.extraContents, });
+        },
+        userPreferences: function(){
+            EventBus.$emit('updateData', {categorie : GLOBALS.PREFERENCES  ,datas : this.userPreferences, });
         }
     }
 });

@@ -5,5 +5,6 @@ export const GLOBALS = {
     APPS : 'appli',
     MOVIES : 'movie',
     EXTRAS : 'extra',
+    PREFERENCES : 'preferences'
     //fin  noms des composants //
 };
