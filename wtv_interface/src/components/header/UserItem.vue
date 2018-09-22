@@ -5,6 +5,7 @@
 <script>
     import RestResource from "../../services/dataService";
     import {STORE} from "../../states/store";
+    import {GLOBALS} from "../../const/globals";
 
     export default {
         props: ['name'],
@@ -27,7 +28,7 @@
             },
             listener: function ({code}) {
                 if (code === 'Enter') {
-                    let user = STORE.currentUser === "Antoine la guez" ? 'Marlene la zouz' : "Antoine la guez";
+                    let user = STORE.currentUser === GLOBALS.USER_ONE ? GLOBALS.USER_TWO : GLOBALS.USER_ONE;
                     STORE.currentUser = user;
                     RestResource.storeUsers(user)
                         .then(res => {

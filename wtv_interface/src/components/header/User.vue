@@ -20,6 +20,8 @@
 <script>
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import UserItem from './UserItem';
+    import {STORE} from "../../states/store";
+    import {GLOBALS} from "../../const/globals";
 
     export default {
         components: {UserItem},
@@ -32,7 +34,11 @@
         methods: {
             isFocus(){
                 this.focused = true;
-                this.getFocus();
+                if(STORE.currentUser === GLOBALS.USER_ONE){
+                    this.getFocus(0);
+                }else{
+                    this.getFocus(1);
+                }
             },
             listener: function ({code}) {
                 {

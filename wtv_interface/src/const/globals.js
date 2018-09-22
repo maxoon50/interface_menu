@@ -5,6 +5,8 @@ export const GLOBALS = {
     APPS : 'appli',
     MOVIES : 'movie',
     EXTRAS : 'extra',
-    PREFERENCES : 'preferences'
+    PREFERENCES : 'preferences',
+    USER_ONE : 'Antoine la guez',
+    USER_TWO : 'Marlene la zouz'
     //fin  noms des composants //
 };
