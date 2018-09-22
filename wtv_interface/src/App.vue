@@ -68,18 +68,18 @@
         beforeCreate() {
             RestResource.storeUsers()
                 .then(res => {
+                    // ici avec la res tu peux récupérer le "res.preferences.keywords" et du
+                    // coup faire un autre RestResource.getYouTubeVideos pour récupérer tes  videos
+                    // et les mettre dans le STORE.user.extracontents
+                    // ensuite tu fais le this.okData = true pour lancer le chargement des données
                     this.okData = true;
                 })
                 .catch(err => {
-                    alert('une erreur est survenue, merci de contacter l\'administrateur \n' + err);
+                    console.error('une erreur est survenue, merci de contacter l\'administrateur \n' + err);
                 });
             RestResource.storeChannels()
-                .then(res=>{
-
-                })
-                .catch(err=>{
-
-                })
+                .then(res=>{})
+                .catch(err=>{})
         },
         updated() {
             this.initListeners();

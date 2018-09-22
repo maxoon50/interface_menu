@@ -38,7 +38,7 @@ class RestResource {
                     STORE.appliContents = res.preferences.apps;
                     STORE.movieContents = res.preferences.films;
                     STORE.extraContents = res.preferences.extras;
-                    resolve(true);
+                    resolve(res);
                 })
                 .catch( err =>{
                     reject(err);
