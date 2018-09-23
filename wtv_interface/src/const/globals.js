@@ -9,7 +9,7 @@ export const GLOBALS = {
     USER_ONE : 'Antoine la guez',
     USER_TWO : 'Marlene la zouz',
     BTN_CANCEL: 'Cancel',
-    BTN_RESET : 'Reset',
+    BTN_REMOVE : 'Remove',
     BTN_SAVE : 'Save'
     //fin  noms des composants //
 };

@@ -42,7 +42,6 @@
                         }else{
                             this.removePref();
                         }
-
                     }
                 }
             },

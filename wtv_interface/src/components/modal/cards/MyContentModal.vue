@@ -12,9 +12,11 @@
 </template>
 
 <script>
+    import {mixinSavePreferences} from "../../../mixins/mixinSavePreferences";
 
     export default {
         props: ['content'],
+        mixins: [mixinSavePreferences],
         data: function () {
             return {
                 focused: false,
@@ -34,6 +36,11 @@
                 {
                     if (code === 'Enter') {
                         this.checked = this.checked == true ? false : true;
+                        if(this.checked){
+                            this.savePref();
+                        }else{
+                            this.removePref();
+                        }
                     }
                 }
             },

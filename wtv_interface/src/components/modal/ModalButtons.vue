@@ -7,14 +7,26 @@
 <script>
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import {GLOBALS} from "../../const/globals";
+    import {EventBus} from "../../main";
 
     export default {
         name: "ModalButtons",
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                buttons: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_SAVE],
                 focused: false,
+                buttonsArr: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_SAVE],
+            }
+        },
+        computed:{
+            buttons : {
+                get: function () {
+                    return this.buttonsArr;
+                },
+                // mutateur
+                set: function (newValue) {
+                    this.buttonsArr = newValue;
+                }
             }
         },
         methods: {
@@ -59,6 +71,16 @@
                 }
             }
             ///----------Fin Méthodes Navigation-------------///
+        },
+        mounted(){
+            /**
+             * Event received from "navigation state"
+             */
+            EventBus.$on('ModalOpened', (source) => {
+                if(source.type === 'MyContentModal'){
+                    this.buttons = [GLOBALS.BTN_CANCEL, GLOBALS.BTN_REMOVE];
+                }
+            })
         }
 
     }
