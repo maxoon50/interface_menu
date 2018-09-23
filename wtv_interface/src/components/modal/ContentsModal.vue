@@ -19,6 +19,7 @@
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import {navigationState} from "../../states/navigationState";
 
+
     export default {
         name: "ContentsModal",
         components: {
@@ -75,7 +76,6 @@
 
         },
         created() {
-
         }
     }
 </script>

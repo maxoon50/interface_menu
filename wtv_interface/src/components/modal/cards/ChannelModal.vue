@@ -5,13 +5,14 @@
             </div>
             <div class="sub color-bg-sub">
                 {{content.title}}
-                <span class="input"> <input type="checkbox"  v-model="checked"></span>
+                <span class="input"> <input type="checkbox" v-model="checked"></span>
             </div>
         </div>
     </transition>
 </template>
 
 <script>
+    import {STORE} from "../../../states/store";
 
     export default {
         props: ['content'],
@@ -49,6 +50,13 @@
                 return 'background-image: url(/imgs/' + this.content.img + ')';
             }
         },
+        created() {
+            STORE.channelContents.forEach(elt => {
+                if(elt.title === this.content.title){
+                    this.checked = true;
+                }
+            })
+        }
 
     };
 </script>
@@ -71,8 +79,10 @@
 
     .selected {
         border: 3px solid purple;
+        box-sizing: border-box;
     }
-    .input{
+
+    .input {
         position: absolute;
         top: 0px;
         right: 0px;

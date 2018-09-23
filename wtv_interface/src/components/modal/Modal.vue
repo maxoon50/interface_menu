@@ -23,6 +23,7 @@
     import {EventBus} from "../../main";
     import ModalButtons from "./ModalButtons"
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
+    import {STORE} from "../../states/store";
 
     export default {
         name: "Modal",
@@ -36,7 +37,7 @@
                 myContentState,
                 nbreRow: 0,
                 navigationState,
-                dataSource : myContentState.contents,
+                dataSource : STORE.modalChannelContents,
                 categorie : 'ChannelModal'
             }
         },
@@ -108,7 +109,6 @@
                 }else{
                     this.dataSource = source.data;
                 }
-
                 this.categorie = source.type;
                 this.nbreRowCalculate();
                 this.isFocus();
