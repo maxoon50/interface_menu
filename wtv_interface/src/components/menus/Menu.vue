@@ -102,7 +102,7 @@
         text-decoration: none;
         font-weight: bold;
         font-size: 20px;
-        color: salmon;
+        color: white;
         cursor: pointer;
         left: 50%;
         right: 20%;
@@ -156,10 +156,14 @@
 
 
     #focusDiv {
-        -webkit-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
+        -moz-box-shadow: 0 0 10px rgb(26, 159, 220);
+        -webkit-box-shadow: 0 0 10px rgb(26, 159, 220);
+        box-shadow: 0 0 10px rgb(26, 159, 220);
+        transition: all 0.3s;
+/*        -webkit-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
         -moz-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
-        box-shadow: inset -1px -1px 5px 5px rgba(255, 255, 255, 1);
-        opacity: 1;
+        box-shadow: inset -1px -1px 5px 5px rgba(255, 255, 255, 1);*/
+        opacity: 0.8;
         border-radius: 5px;
         padding: 10px;
         width: 10%;
