@@ -1,15 +1,6 @@
 <template>
     <div id="app">
-        <img src="/imgs/galet_backg.png" style="
-    position:  absolute;
-    height:  100%;
-    width:  100%;
-    top: 0px;
-    left: 0px;
-    box-sizing: border-box;
-    filter: blur(10px);
-    z-index: 0;
-"/>
+   <Background/>
         <template v-if="okData" v-for="child in componentList">
             <component :is="child" :key="child" ref="contents"></component>
         </template>
@@ -24,11 +15,13 @@
     import {mixinEltWithChild} from './mixins/mixinEltWithChild';
     import RestResource from "./services/dataService";
     import {STORE} from "./states/store";
+    import Background from "./components/main/Background";
 
     export default {
         name: 'app',
         mixins: [mixinEltWithChild],
         components: {
+            Background,
             'app-header': Header,
             'app-menu': Menu,
             'app-sous-menu': SousMenu,
