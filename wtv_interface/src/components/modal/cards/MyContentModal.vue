@@ -37,9 +37,9 @@
                     if (code === 'Enter') {
                         this.checked = this.checked == true ? false : true;
                         if(this.checked){
-                            this.savePref();
-                        }else{
                             this.removePref();
+                        }else{
+                            this.savePref();
                         }
                     }
                 }

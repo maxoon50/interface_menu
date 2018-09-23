@@ -21,10 +21,13 @@ class ModalService {
                    this.eltsToSave.splice(index, 1);
                }
         });
+        console.log(this.eltsToSave)
     };
 
-
-
+    /**
+     * Make a copy of user preferences according to the category
+     * @private
+     */
     _getUserPrefs() {
         let elts = STORE[this._getStoreCategory()];
         let copyElts = JSON.parse(JSON.stringify(elts));
@@ -44,7 +47,6 @@ class ModalService {
         // la référence sera changée (le store), une fois que la db aura fait l'update
         let clone = JSON.parse(JSON.stringify(STORE.objectUser));
         clone.preferences[category] = this.eltsToSave;
-
         myHeaders.append("Content-Type", "application/json");
         let myInit = {
             method: 'POST',

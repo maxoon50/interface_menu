@@ -117,6 +117,9 @@
                     case GLOBALS.BTN_SAVE:
                         this.saveModifications();
                         break;
+                    case GLOBALS.BTN_REMOVE:
+                        this.saveModifications();
+                        break;
                 }
             },
             saveModifications: function() {
@@ -136,14 +139,13 @@
              * Event received from "navigation state"
              */
             EventBus.$on('ModalOpened', (source) => {
+                this.categorie = source.type;
                 this.modalService = new ModalService(this.categorie);
                 if(source.data.contents){
                     this.dataSource = source.data.contents;
                 }else{
                     this.dataSource = source.data;
                 }
-                console.log(source)
-                this.categorie = source.type;
                 this.nbreRowCalculate();
                 this.isFocus();
             })
