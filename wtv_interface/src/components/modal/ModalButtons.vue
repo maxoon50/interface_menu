@@ -6,17 +6,19 @@
 
 <script>
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
+    import {GLOBALS} from "../../const/globals";
 
     export default {
         name: "ModalButtons",
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                buttons: ['annuler', 'réinitialiser', 'valider'],
+                buttons: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_RESET, GLOBALS.BTN_SAVE],
                 focused: false,
             }
         },
         methods: {
+
             ///----------Méthodes Navigation-------------///
             giveFocus: function () {
                 // ici on vérifie s'il y a un last focused et on le remove au besoin
@@ -45,6 +47,15 @@
                             this.focused = false;
                             this.removeListeners();
                             this.$parent.isFocus();
+                            break;
+                        case 'Enter':
+                            // Ici on remove le focus sur tous les btns sauf reset puis on avertit le parent qui appelera le service
+                            let btnFocused = this.$refs.contents[this.focus].innerText;
+                            if(btnFocused === GLOBALS.BTN_RESET || btnFocused === GLOBALS.BTN_SAVE){
+                                this.$refs.contents.forEach(elt => elt.classList.remove('focus'));
+                            }
+                            this.$parent.buttonEvent(this.$refs.contents[this.focus]);
+                            break;
                     }
                 }
             }
@@ -55,7 +66,5 @@
 </script>
 
 <style scoped>
-    .focus {
-        background-color: orangered;
-    }
+
 </style>

@@ -4,9 +4,7 @@ const API_ADRESS = "http://localhost:8005/";
 const USERDEFAULT = "Antoine la guez";
 class RestResource {
 
-    constructor(){
-
-    }
+    
     /**
     * Get the users form the API,
     * If the promise is resolved, store the users in the STORE object

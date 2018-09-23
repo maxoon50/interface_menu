@@ -13,9 +13,11 @@
 
 <script>
     import {STORE} from "../../../states/store";
+    import {mixinSavePreferences} from "../../../mixins/mixinSavePreferences";
 
     export default {
         props: ['content'],
+        mixins: [mixinSavePreferences],
         data: function () {
             return {
                 focused: false,
@@ -35,6 +37,12 @@
                 {
                     if (code === 'Enter') {
                         this.checked = this.checked == true ? false : true;
+                        if(this.checked){
+                            this.savePref();
+                        }else{
+                            this.removePref();
+                        }
+
                     }
                 }
             },
@@ -43,7 +51,7 @@
             },
             removeListener: function () {
                 window.removeEventListener('keydown', this.listener);
-            }
+            },
         },
         computed: {
             style() {
@@ -66,7 +74,6 @@
     @import '../../../assets/style/style.less';
 
     .chan {
-        //border : solid 5px black;
         height: 29%;
         width: 80%;
         margin: 8% 10% 0% 10%;

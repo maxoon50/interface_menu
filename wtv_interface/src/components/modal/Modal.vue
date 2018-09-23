@@ -24,6 +24,8 @@
     import ModalButtons from "./ModalButtons"
     import {mixinEltWithChild} from "../../mixins/mixinEltWithChild";
     import {STORE} from "../../states/store";
+    import {GLOBALS} from "../../const/globals";
+    import ModalService from "../../services/modalService"
 
     export default {
         name: "Modal",
@@ -38,7 +40,8 @@
                 nbreRow: 0,
                 navigationState,
                 dataSource : STORE.modalChannelContents,
-                categorie : 'ChannelModal'
+                categorie : 'ChannelModal',
+                modalService : null
             }
         },
         computed: {
@@ -89,21 +92,51 @@
                             this.setFocus(-1);
                             break;
                         case 'Escape' :
-                            this.removeFocus();
-                            navigationState.modalOpened = false;
-                            navigationState.modalY = 0;
+                            this.resetModal();
                             break;
                     }
                 }
-            }
+            },
             ///----------Fin Méthodes Navigation-------------///
+            resetModal: function(){
+                this.removeFocus();
+                navigationState.modalOpened = false;
+                navigationState.modalY = 0;
+                this.modalService.resetEltToSave();
+            },
+            storeNewPref: function(elt) {
+                this.modalService.addEltToSave(elt);
+            },
+            removePref: function(elt) {
+                this.modalService.removeEltToSave(elt);
+            },
+            buttonEvent: function(btn) {
+                switch(btn.innerText){
+                    case GLOBALS.BTN_CANCEL:
+                        this.cancelModification();
+                        break;
+                    case GLOBALS.BTN_RESET:
+                        console.log('reset gro');
+                        break;
+                    case GLOBALS.BTN_SAVE:
+                        console.log('save gro');
+                        break;
+                }
+            },
+            cancelModification: function(){
+                this.modalService.resetEltToSave();
+                navigationState.modalOpened = false;
+                navigationState.modalY = 0;
+            },
+
         },
         mounted() {
+            this.modalService = new ModalService(this.categorie);
             /**
              * Event received from "navigation state"
              */
             EventBus.$on('ModalOpened', (source) => {
-
+                this.modalService = new ModalService(this.categorie);
                 if(source.data.contents){
                     this.dataSource = source.data.contents;
                 }else{
