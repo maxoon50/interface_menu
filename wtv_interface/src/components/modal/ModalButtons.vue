@@ -13,7 +13,7 @@
         mixins: [mixinEltWithChild],
         data: function () {
             return {
-                buttons: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_RESET, GLOBALS.BTN_SAVE],
+                buttons: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_SAVE],
                 focused: false,
             }
         },
@@ -49,11 +49,10 @@
                             this.$parent.isFocus();
                             break;
                         case 'Enter':
-                            // Ici on remove le focus sur tous les btns sauf reset puis on avertit le parent qui appelera le service
-                            let btnFocused = this.$refs.contents[this.focus].innerText;
-                            if(btnFocused === GLOBALS.BTN_RESET || btnFocused === GLOBALS.BTN_SAVE){
-                                this.$refs.contents.forEach(elt => elt.classList.remove('focus'));
-                            }
+                            this.focused = false;
+                            this.removeListeners();
+                            this.$parent.isFocus();
+                            this.$refs.contents.forEach(elt => elt.classList.remove('focus'));
                             this.$parent.buttonEvent(this.$refs.contents[this.focus]);
                             break;
                     }

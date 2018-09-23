@@ -49,10 +49,8 @@
         computed :{
             // accesseur
             cards :{
-
             get: function () {
                 return this.contents;
-
             },
             // mutateur
             set: function (newValue) {

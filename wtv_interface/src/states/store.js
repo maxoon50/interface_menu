@@ -4,6 +4,8 @@ import {GLOBALS} from "../const/globals";
 
 export const STORE =new Vue({
     data: {
+        // => objectuser contain the whole user
+        objectUser : null,
         currentUser: GLOBALS.USER_ONE,
         userPreferences: [],
         channelContents:[],

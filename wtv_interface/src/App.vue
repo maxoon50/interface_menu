@@ -23,6 +23,7 @@
     import Main from './components/main/Main.vue';
     import {mixinEltWithChild} from './mixins/mixinEltWithChild';
     import RestResource from "./services/dataService";
+    import {STORE} from "./states/store";
 
     export default {
         name: 'app',
@@ -68,6 +69,7 @@
         beforeCreate() {
             Promise.all([RestResource.storeUsers(), RestResource.storeChannels()])
                 .then(res => {
+                    STORE.objectUser = res[0];
                     this.okData = true;
                 })
                 .catch(err => {

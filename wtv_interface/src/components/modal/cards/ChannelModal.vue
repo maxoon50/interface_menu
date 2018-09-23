@@ -59,8 +59,9 @@
             }
         },
         created() {
+            // => à remplacer : regex...
             STORE.channelContents.forEach(elt => {
-                if(elt.title === this.content.title){
+                if(elt.title.replace(/\s+/g, '').toLowerCase() === this.content.title.replace(/\s+/g, '').toLowerCase()){
                     this.checked = true;
                 }
             })

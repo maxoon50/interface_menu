@@ -102,7 +102,6 @@
                 this.removeFocus();
                 navigationState.modalOpened = false;
                 navigationState.modalY = 0;
-                this.modalService.resetEltToSave();
             },
             storeNewPref: function(elt) {
                 this.modalService.addEltToSave(elt);
@@ -115,16 +114,17 @@
                     case GLOBALS.BTN_CANCEL:
                         this.cancelModification();
                         break;
-                    case GLOBALS.BTN_RESET:
-                        console.log('reset gro');
-                        break;
                     case GLOBALS.BTN_SAVE:
-                        console.log('save gro');
+                        this.saveModifications();
                         break;
                 }
             },
+            saveModifications: function() {
+                this.modalService.savePreferences(this.categorie);
+                navigationState.modalOpened = false;
+                navigationState.modalY = 0;
+            },
             cancelModification: function(){
-                this.modalService.resetEltToSave();
                 navigationState.modalOpened = false;
                 navigationState.modalY = 0;
             },
@@ -142,6 +142,7 @@
                 }else{
                     this.dataSource = source.data;
                 }
+                console.log(source)
                 this.categorie = source.type;
                 this.nbreRowCalculate();
                 this.isFocus();

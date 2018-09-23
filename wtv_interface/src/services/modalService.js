@@ -4,68 +4,121 @@ const API_ADRESS = "http://localhost:8005/";
 
 class ModalService {
 
-    constructor(type) {
+    constructor(categorie) {
         this.eltsToSave = [];
-        this.type = type;
-        console.log('ok new modal service');
-        console.log(this.type)
+        this.categorie = categorie;
+        this._getUserPrefs();
     }
 
     addEltToSave(elt) {
         this.eltsToSave.push(elt);
-        console.log(this.eltsToSave)
     };
 
-    removeEltToSave(elt) {
-        this.eltsToSave.find((elt, index) => {
-            this.eltsToSave.splice(index, 1);
+    removeEltToSave(pElt) {
+        this.eltsToSave.forEach((elt, index) => {
+            // => à revoir id...
+               if(elt.img === pElt.img){
+                   this.eltsToSave.splice(index, 1);
+               }
         });
-        console.log(this.eltsToSave)
     };
 
-    resetEltToSave() {
-        this.eltsToSave = [];
-        console.log(this.eltsToSave)
-    };
+
+
+    _getUserPrefs() {
+        let elts = STORE[this._getStoreCategory()];
+        let copyElts = JSON.parse(JSON.stringify(elts));
+        this.eltsToSave.push(...copyElts);
+    }
 
     /**
-     * Get the users form the API,
-     * If the promise is resolved, store the users in the STORE object
-     * @returns boolean
+     *
+     * @returns {Promise<User>}
      */
-    storeUsers(name) {
-
-        if (!name) {
-            name = USERDEFAULT;
-        }
+    savePreferences() {
         let myHeaders = new Headers();
+        //let user = STORE.objectUser;
+        let category = this._getCategorie();
+
+        // ici on ne change pas directement la référence de l'objet, on veut juste le cloner,
+        // la référence sera changée (le store), une fois que la db aura fait l'update
+        let clone = JSON.parse(JSON.stringify(STORE.objectUser));
+        clone.preferences[category] = this.eltsToSave;
+
         myHeaders.append("Content-Type", "application/json");
         let myInit = {
-            method: 'GET',
+            method: 'POST',
             headers: myHeaders,
             mode: 'cors',
-            cache: 'default'
+            cache: 'default',
+            body: JSON.stringify(clone)
         };
 
         return new Promise((resolve, reject) => {
-            fetch(`${API_ADRESS}user/${name}`, myInit)
+            fetch(`${API_ADRESS}update`, myInit)
                 .then(function (response) {
                     return response.json();
                 })
                 .then((res) => {
-                    STORE.userPreferences = res.preferences.keywords;
-                    STORE.channelContents = res.preferences.channels;
-                    STORE.myContentContents = res.preferences.myContents;
-                    STORE.appliContents = res.preferences.apps;
-                    STORE.movieContents = res.preferences.films;
-                    STORE.extraContents = res.preferences.extras;
+                    let nameAttrStore = this._getStoreCategory(this.categorie);
+                    STORE[nameAttrStore] = res.preferences[category];
                     resolve(res);
                 })
                 .catch(err => {
                     reject(err);
                 })
-        })
+        });
+    };
 
+
+    /**
+     * @returns {string}
+     * @private
+     * from the name of the card modal, return the property name which is attibute to the main User object ex User.channels, User.extras ...
+     */
+    _getCategorie() {
+        switch(this.categorie){
+            case "ChannelModal":
+                return "channels";
+                break;
+            case "MyContentModal":
+                return "myContents";
+                break;
+            case "AppliModal":
+                return "apps";
+                break;
+            case "ExtraModal":
+                return "extras";
+                break;
+            case "MovieModal":
+                return "films";
+                break;
+        }
+    };
+
+    /**
+     * @returns {string}
+     * @private
+     * get the store attribute corresponding to the opened modal
+     */
+    _getStoreCategory() {
+        switch(this.categorie){
+            case "ChannelModal":
+                return "channelContents";
+                break;
+            case "MyContentModal":
+                return "myContentContents";
+                break;
+            case "AppliModal":
+                return "appliContents";
+                break;
+            case "ExtraModal":
+                return "extraContents";
+                break;
+            case "MovieModal":
+                return "movieContents";
+                break;
+        }
     }
 
 
