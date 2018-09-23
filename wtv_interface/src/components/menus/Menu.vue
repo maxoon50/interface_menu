@@ -23,7 +23,7 @@
         components: {},
         data() {
             return {
-                pages: ['MEDIA CENTER', 'TV', 'GUIDE', 'HOME', 'VOD', 'SETTINGS', 'SEARCH'],
+                pages: ['MEDIA', 'TV', 'GUIDE', 'HOME', 'VOD', 'SETTINGS', 'SEARCH'],
                 focus: 3
             }
         },
@@ -106,12 +106,13 @@
         cursor: pointer;
         left: 50%;
         right: 20%;
-        opacity: 0.5;
+        opacity: 0;
         backface-visibility: hidden;
         z-index: 1;
+        transition: opacity 0.3s ease-in-out;
     }
 
-    /* backface-visibility: hidden => will ensure silky 60fps transitions and avoid fuzzy text rendering 
+    /* backface-visibility: hidden => will ensure silky 60fps transitions and avoid fuzzy text rendering
     during transformations by tricking the browser into leveraging hardware acceleration.*/
     .menu-page-move {
         transition: all 1s;
@@ -128,11 +129,31 @@
         /* position:absolute; */
         z-index: -5;
     }
-
-
-    li.menu-page:nth-child(4) {
+    .menu-page[data-index="0"] {
+        opacity: 0;
+    }
+    .menu-page[data-index="1"] {
+        opacity: 0.1;
+    }
+    .menu-page[data-index="2"] {
+        opacity: 0.5;
+    }
+    .menu-page[data-index="3"] {
         opacity: 1;
     }
+    .menu-page[data-index="4"] {
+        opacity: 0.5;
+    }
+    .menu-page[data-index="5"] {
+        opacity: 0.1;
+    }
+    .menu-page[data-index="6"] {
+        opacity: 0;
+    }
+
+
+
+
 
     #focusDiv {
         -webkit-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
