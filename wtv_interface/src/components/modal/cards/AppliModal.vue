@@ -12,9 +12,12 @@
 </template>
 
 <script>
+    import {mixinSavePreferences} from "../../../mixins/mixinSavePreferences";
+    import {STORE} from "../../../states/store";
 
     export default {
         props: ['content'],
+        mixins: [mixinSavePreferences],
         data: function () {
             return {
                 focused: false,
@@ -34,6 +37,11 @@
                 {
                     if (code === 'Enter') {
                         this.checked = this.checked == true ? false : true;
+                        if(this.checked){
+                            this.savePref();
+                        }else{
+                            this.removePref();
+                        }
                     }
                 }
             },
@@ -49,7 +57,13 @@
                 return 'background-image: url(/imgs/' + this.content.img + ')';
             }
         },
-        mounted() {
+        created() {
+            // => à remplacer : regex...
+            STORE.appliContents.forEach(elt => {
+                if(elt.title.replace(/\s+/g, '').toLowerCase() === this.content.title.replace(/\s+/g, '').toLowerCase()){
+                    this.checked = true;
+                }
+            })
         }
     };
 </script>

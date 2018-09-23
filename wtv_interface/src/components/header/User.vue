@@ -10,7 +10,7 @@
                 />
             </div>
 
-            <img src="/imgs/logo-user.png" alt="logo user">
+            <img src="/imgs/logoUser.png" alt="logo user">
 
 
         </div>
@@ -79,7 +79,7 @@
         .flex-row;
         .align-center;
         img {
-            height: 60px;
+            height: 30px;
             margin-left: 25px;
         }
     }

@@ -74,6 +74,35 @@ class RestResource {
         })
     }
 
+
+    /**
+     * Store in global STORE the apps for the apps modal
+     * @returns {Promise<any>}
+     */
+    storeApps() {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        let myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        return new Promise((resolve, reject)=>{
+            fetch(`${API_ADRESS}apps`, myInit)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then((res) => {
+                    STORE.modalAppsContents = res[0].apps;
+                    resolve(true);
+                })
+                .catch( err =>{
+                    reject(err);
+                })
+        })
+    }
 }
 
 export default new RestResource();

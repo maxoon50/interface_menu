@@ -67,7 +67,11 @@
             },
         },
         beforeCreate() {
-            Promise.all([RestResource.storeUsers(), RestResource.storeChannels()])
+            Promise.all([
+                RestResource.storeUsers(),
+                RestResource.storeChannels(),
+                RestResource.storeApps()
+                ])
                 .then(res => {
                     STORE.objectUser = res[0];
                     this.okData = true;

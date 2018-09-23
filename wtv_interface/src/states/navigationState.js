@@ -47,7 +47,7 @@ export let navigationState = new Vue({
                     this.dataSource =  {data:STORE.myContentContents, type: 'MyContentModal'};
                     break;
                 case 'apps':
-                    this.dataSource =  {data:myAppState, type: 'MyContentModal'};
+                    this.dataSource =  {data:STORE.modalAppsContents, type: 'AppliModal'};
                     break;
                 case 'films':
                     this.dataSource =  {data:myFilmState, type: 'MyContentModal'};
