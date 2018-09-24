@@ -67,7 +67,8 @@
                 ])
                 .then(res => {
                     STORE.objectUser = res[0];
-                    RestResource.getYouTubeVideos(STORE.objectUser.preferences.keywords)
+                    // => finalement l'appel est fait directement dans le dataService
+                    //RestResource.getYouTubeVideos(STORE.objectUser.preferences.keywords)
                     this.okData = true;
                 })
                 .catch(err => {

@@ -11,7 +11,7 @@ class RestResource {
     * @returns boolean
      */
     storeUsers(name) {
-
+    var that = this;
         if(!name){
             name = USERDEFAULT;
         }
@@ -35,7 +35,8 @@ class RestResource {
                     STORE.myContentContents = res.preferences.myContents;
                     STORE.appliContents = res.preferences.apps;
                     STORE.movieContents = res.preferences.films;
-                    STORE.extraContents = res.preferences.extras;
+
+                    that.getYouTubeVideos(res.preferences.keywords);
                     resolve(res);
                 })
                 .catch( err =>{
@@ -59,6 +60,8 @@ class RestResource {
             mode: 'cors',
             cache: 'default'
         };
+        // on reset toujours l'extracontent à 0, si le user change
+        STORE.extraContents = [];
         for(const pref of preferencesUser){
             fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+pref+'&type=video&maxResults=1&order=viewCount&key=AIzaSyBGnQO5k02QBDTuMX-gmuVEiKA7_kfosOk', myInit)
                 .then(function(response) {
@@ -73,6 +76,7 @@ class RestResource {
                             title: res.items[0].snippet.title
                         }
                     );
+                    console.log(STORE.extraContents)
                     return STORE.extraContents; 
                 })
         }
