@@ -1,5 +1,7 @@
 <template>
-    <div><img :class="{focusborder: focused}" src="imgs/poppe2.jpg" alt=""></div>
+    <div><img v-if="name == 'Antoine la guez'" :class="{focusborder: focused}" src="imgs/poppe2.jpg" alt="le poppe">
+        <img v-if="name == 'Marlene la zouz'" :class="{focusborder: focused}" src="imgs/marlene.jpeg" alt="marlène">
+    </div>
 </template>
 
 <script>

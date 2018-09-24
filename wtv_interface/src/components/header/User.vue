@@ -27,7 +27,7 @@
         components: {UserItem},
         data: function () {
             return {
-                users: ['jojo', 'lulu']
+                users: [GLOBALS.USER_ONE, GLOBALS.USER_TWO]
             }
         },
         mixins: [mixinEltWithChild],
@@ -79,6 +79,7 @@
         .flex-row;
         .align-center;
         img {
+            transition: all 0.3s ease-in-out;
             height: 30px;
             margin-left: 25px;
         }
