@@ -2,7 +2,7 @@
 export const mixinEltWithoutChild = {
     data: function () {
         return {
-            focused: false
+            focused: false,
         }
     },
     methods: {

@@ -67,6 +67,7 @@
                 ])
                 .then(res => {
                     STORE.objectUser = res[0];
+                    RestResource.getYouTubeVideos(STORE.objectUser.preferences.keywords)
                     this.okData = true;
                 })
                 .catch(err => {
@@ -77,6 +78,13 @@
             this.initListeners();
             this.isFocus(1);
         },
+        created() {
+          // load youtube Iframe API  
+          const tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          const firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
     }
 </script>
 

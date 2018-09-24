@@ -65,7 +65,6 @@ class RestResource {
                     return response.json()
                 })
                 .then(function(res) {
-                    console.log(res)
                     STORE.extraContents.push(
                         {
                             _id: res.items[0].id.videoId, 
