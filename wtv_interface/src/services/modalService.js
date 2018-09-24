@@ -47,6 +47,7 @@ class ModalService {
         // la référence sera changée (le store), une fois que la db aura fait l'update
         let clone = JSON.parse(JSON.stringify(STORE.objectUser));
         clone.preferences[category] = this.eltsToSave;
+        clone.preferences.extras = {};
         myHeaders.append("Content-Type", "application/json");
         let myInit = {
             method: 'POST',
