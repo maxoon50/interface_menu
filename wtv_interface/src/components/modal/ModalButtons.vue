@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <button v-for="btn in buttons" ref="contents">{{btn}}</button>
+    <div id="cont-btn">
+        <button class="btn" v-for="btn in buttons" ref="contents">{{btn}}</button>
     </div>
 </template>
 
@@ -18,8 +18,8 @@
                 buttonsArr: [GLOBALS.BTN_CANCEL, GLOBALS.BTN_SAVE],
             }
         },
-        computed:{
-            buttons : {
+        computed: {
+            buttons: {
                 get: function () {
                     return this.buttonsArr;
                 },
@@ -72,12 +72,12 @@
             }
             ///----------Fin Méthodes Navigation-------------///
         },
-        mounted(){
+        mounted() {
             /**
              * Event received from "navigation state"
              */
             EventBus.$on('ModalOpened', (source) => {
-                if(source.type === 'MyContentModal'){
+                if (source.type === 'MyContentModal') {
                     this.buttons = [GLOBALS.BTN_CANCEL, GLOBALS.BTN_REMOVE];
                 }
             })
@@ -87,5 +87,24 @@
 </script>
 
 <style scoped>
+    #cont-btn {
+        margin-left: auto;
+    }
 
+    .btn{
+        height: 25px;
+        background-color: black;
+        color: #25bbff;
+        margin-right: 10px;
+        border-radius: 3px;
+        border: 1px solid #25bbff;
+        transition: all 0.2s ease-in-out;
+    }
+    .btn.focus{
+        background-color: #25bbff;
+        color: black;
+        margin-right: 10px;
+        border-radius: 3px;
+        border: 1px solid black;
+    }
 </style>

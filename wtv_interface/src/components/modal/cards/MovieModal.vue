@@ -1,6 +1,6 @@
 <template>
     <transition>
-        <div class="chan" :class="{focusborder: focused, selected: checked}">
+        <div class="chan" :class="{focusmodal: focused, selected: checked}">
             <div class="view" :style="style">
                
             </div>
@@ -71,9 +71,6 @@
         height: 15%;
     }
 
-    .selected {
-        border: 3px solid purple;
-    }
     .input{
         position: absolute;
         top: 0px;

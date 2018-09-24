@@ -5,7 +5,8 @@
                 name="menu-page"
                 tag="ul"
                 appear>
-            <li class="menu-page" ref="contents"
+            <li :class="{focusMenu: focused}"
+                class="menu-page" ref="contents"
                 v-for="(page, index) in pages"
                 :key="page"
                 :data-index="index">{{page}}
@@ -16,7 +17,6 @@
 </template>
 
 <script>
-    import {mixinEltWithChild} from '../../mixins/mixinEltWithChild';
     import {navigationState} from "../../states/navigationState";
 
     export default {
@@ -24,7 +24,8 @@
         data() {
             return {
                 pages: ['MEDIA', 'TV', 'GUIDE', 'HOME', 'VOD', 'SETTINGS', 'SEARCH'],
-                focus: 3
+                focus: 3,
+                focused: false
             }
         },
         methods: {
@@ -38,9 +39,11 @@
                 this.pages = [last].concat(this.pages)
             },
             isFocus() {
+                this.focused = true;
                 this.initListeners();
             },
             removeFocus() {
+                this.focused = false;
                 window.removeEventListener('keydown', this.listener);
             },
             setFocus: function (pos) {
@@ -129,40 +132,42 @@
         /* position:absolute; */
         z-index: -5;
     }
+
     .menu-page[data-index="0"] {
         opacity: 0;
     }
+
     .menu-page[data-index="1"] {
         opacity: 0.1;
     }
+
     .menu-page[data-index="2"] {
         opacity: 0.5;
     }
+
     .menu-page[data-index="3"] {
         opacity: 1;
     }
+
+
     .menu-page[data-index="4"] {
         opacity: 0.5;
     }
+
     .menu-page[data-index="5"] {
         opacity: 0.1;
     }
+
     .menu-page[data-index="6"] {
         opacity: 0;
     }
 
-
-
-
+    .menu-page[data-index="3"].focusMenu {
+        color: rgb(26, 159, 220);
+        opacity: 1;
+    }
 
     #focusDiv {
-        -moz-box-shadow: 0 0 10px rgb(26, 159, 220);
-        -webkit-box-shadow: 0 0 10px rgb(26, 159, 220);
-        box-shadow: 0 0 10px rgb(26, 159, 220);
-        transition: all 0.3s;
-/*        -webkit-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
-        -moz-box-shadow: inset -1px -1px 5px 12px rgba(255, 255, 255, 1);
-        box-shadow: inset -1px -1px 5px 5px rgba(255, 255, 255, 1);*/
         opacity: 0.8;
         border-radius: 5px;
         padding: 10px;

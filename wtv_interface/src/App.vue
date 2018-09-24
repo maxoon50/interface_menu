@@ -114,9 +114,9 @@
     }
 
     .focusborder {
-        -moz-box-shadow: 0 0 10px rgb(26, 159, 220);
-        -webkit-box-shadow: 0 0 10px rgb(26, 159, 220);
-        box-shadow: 0 0 10px rgb(26, 159, 220);
+        -moz-box-shadow: 0 0 18px rgb(12, 63, 86);
+        -webkit-box-shadow: 0 0 18px rgb(12, 63, 86);
+        box-shadow: 0 0 18px rgb(12, 63, 86);
         transition: all 0.3s;
     }
 

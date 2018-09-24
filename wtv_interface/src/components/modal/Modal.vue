@@ -9,7 +9,7 @@
             />
         </div>
         <div>
-            <ModalButtons ref="buttons"/>
+            <ModalButtons ref="buttons" id="modalBtn"/>
         </div>
     </div>
 </template>
@@ -161,13 +161,25 @@
         height: 90%;
         padding-bottom: 20px;
         display: flex;
+        justify-content: center;
     }
 
     #modal {
         position: absolute;
         height: 100%;
         width: 100%;
-        background-color: azure;
+        background-color: rgba(0,0,0,0.9);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
         box-sizing: border-box;
+        -moz-box-shadow: 0 0 18px rgb(12, 63, 86);
+        -webkit-box-shadow: 0 0 18px rgb(12, 63, 86);
+        box-shadow: 0 0 18px rgb(12, 63, 86);
+        transition: all 0.3s;
+    }
+    #modalBtn{
+        display: flex;
+        justify-content: center;
     }
 </style>
