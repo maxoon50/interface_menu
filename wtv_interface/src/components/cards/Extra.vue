@@ -3,6 +3,8 @@
         <div class="extra" :class="{focusborder: focused}">
             <div class="view" :style="style" :class="{playBo: havePlayerYt}">
                 <div :id="playerVideo"></div>
+        <div class="globalChan trans" :class="{focusborder: focused}">
+            <div class="view" :style="style">
             </div>
             <div class="sub color-bg-sub sub-extras" :class="{invisibleSub: havePlayerYt}">
                 {{ content.title }}

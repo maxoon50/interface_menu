@@ -114,10 +114,12 @@
     }
 
     .focusborder {
-        -moz-box-shadow: 0 0 18px rgb(12, 63, 86);
-        -webkit-box-shadow: 0 0 18px rgb(12, 63, 86);
-        box-shadow: 0 0 18px rgb(12, 63, 86);
-        transition: all 0.3s;
+        -moz-box-shadow: 0 0 18px #1a9fdc;
+        -webkit-box-shadow: 0 0 18px #1a9fdc;
+        box-shadow: 0 0 18px #1a9fdc;
+        transition: all 0.3s ease-in-out;
+        transform: scale3d(1.1,1.1,1.1);
+        z-index: 200;
     }
 
     .hide {

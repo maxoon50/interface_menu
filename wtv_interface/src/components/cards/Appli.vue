@@ -1,5 +1,5 @@
 <template>
-    <div class="backAppli" :class="{focusborder: focused}">
+    <div class="backAppli trans" :class="{focusborder: focused}">
         <div class="viewApp" :style="style">
         </div>
     </div>
@@ -8,10 +8,12 @@
 <script>
     import {mixinEltWithoutChild} from "../../mixins/mixinEltWithoutChild";
     import {GLOBALS} from "../../const/globals";
+    import {EventBus} from "../../main";
+
     export default {
         props: ["content"],
-        data: function(){
-            return{
+        data: function () {
+            return {
                 name: GLOBALS.APPS,
             }
         },
@@ -24,6 +26,7 @@
                 window.removeEventListener("keydown", this.listener);
             },
             isFocus: function () {
+                EventBus.$emit("changeBackground", this.content.img);
                 this.focused = true;
                 this.initListeners()
             },
@@ -51,8 +54,8 @@
 
 <style lang="less">
     .backAppli {
-        height: 130.5px;
-        width: 130.5px;
+        height: 125.5px;
+        width: 125.5px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 10%;

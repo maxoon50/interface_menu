@@ -173,7 +173,9 @@
 <style lang='less'>
 
     @import '../../assets/style/style.less';
-
+    .trans{
+        transition: all 0.3s ease-in-out;
+    }
     .cont-chan {
         .large-row;
         display: flex;

@@ -1,6 +1,6 @@
 <template>
     <transition>
-        <div class="globalChan" :class="{focusborder: focused}">
+        <div class="globalChan trans" :class="{focusborder: focused}">
             <div class="view" :style="style">
                 <video v-if="havePlayer" class="vid" :class="{hide: !playVideo}" ref="video" loop>
                     <source v-bind:src='getVideo()' type="video/mp4">
@@ -15,6 +15,7 @@
 
 <script>
     import {mixinEltWithoutChild} from "../../mixins/mixinEltWithoutChild";
+    import {EventBus} from "../../main";
 
     export default {
         props: ["content", "havePlayer"],
@@ -30,6 +31,7 @@
         },
         methods: {
             isFocus: function () {
+                EventBus.$emit("changeBackground", this.content.img);
                 this.focused = true;
                 if (this.havePlayer) this.timeOut = setTimeout(this.playVid, 1500);
             },

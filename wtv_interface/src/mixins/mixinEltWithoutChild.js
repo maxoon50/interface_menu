@@ -1,3 +1,4 @@
+import {EventBus} from "../main";
 
 export const mixinEltWithoutChild = {
     data: function () {
@@ -7,6 +8,7 @@ export const mixinEltWithoutChild = {
     },
     methods: {
         isFocus: function () {
+            EventBus.$emit("changeBackground", this.content.img);
             this.focused = true;
         },
         removeFocus: function () {
