@@ -29,6 +29,7 @@ export const mixinCreayeYoutubeIframe = {
           },
           playVideoOnDelay(event) {
             this.havePlayerYt = true;
+
             this.focused = false;
             document.getElementsByTagName('iframe')[0].setAttribute("style", "position:absolute;top:0;left:20%;");
             event.target.playVideo();

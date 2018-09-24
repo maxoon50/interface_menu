@@ -1,12 +1,12 @@
 <template>
-    <div class="movie" :class="{focusborder: focused}">
+<!--    <div class="movie trans" :class="{focusborder: focused}">
         <div class="view" :style="style" :class="{playBo: havePlayerYt}">
-            <div :id="playerVideo"></div>
-    <div class="movie trans" :class="{focusborder: focused}">
+            <div :id="playerVideo"></div>-->
+    <div class="movie" :class="{focusborder: focused}">
         <div class="view" :style="style" :class="{playBo: havePlayer}">
               <div :id="playerVideo"></div>
         </div>
-        <div class="sub color-bg-sub" :class="{invisibleSub: havePlayerYt}">
+        <div class="sub color-bg-sub" :class="{invisibleSub: havePlayer}">
             {{ content.title }}
         </div>
     </div>
@@ -21,9 +21,9 @@
         props: ['content'],
         data() {
             return {
+                havePlayer: false,
                 subtitle: this.content.title,
                 timeOut: null,
-                havePlayerYt: false,
                 videoId: null,
                 state: null,
                 playerVideo: null
@@ -150,7 +150,7 @@
             text-overflow: ellipsis;
         }
         .invisibleSub {
-            display: none;
+            display: none !important;
         }
 
     }
