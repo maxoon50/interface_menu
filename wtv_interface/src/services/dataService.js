@@ -46,6 +46,41 @@ class RestResource {
     }
 
     /**
+     * Store in global STORE the videos get according to the user preferences (keywords), 
+     * sorted from highest to lowest number of views. 
+     * @returns {Promise<any>}
+     */
+    getYouTubeVideos(preferencesUser) {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        let myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+        };
+        for(const pref of preferencesUser){
+            fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+pref+'&type=video&maxResults=1&order=viewCount&key=AIzaSyBGnQO5k02QBDTuMX-gmuVEiKA7_kfosOk', myInit)
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(res) {
+                    console.log(res)
+                    STORE.extraContents.push(
+                        {
+                            _id: res.items[0].id.videoId, 
+                            videoId: res.items[0].id.videoId, 
+                            img: res.items[0].snippet.thumbnails.high.url,
+                            title: res.items[0].snippet.title
+                        }
+                    )
+                    return STORE.extraContents; 
+                })
+        }
+        
+    }
+
+    /**
      * Store in global STORE the channels for the channels modal
      * @returns {Promise<any>}
      */
