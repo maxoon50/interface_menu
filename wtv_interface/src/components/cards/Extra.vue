@@ -2,44 +2,42 @@
     <transition>
         <div class="extra" :class="{focusborder: focused}">
             <div class="view" :style="style" :class="{playBo: havePlayerYt}">
-              <div :id="playerVideo"></div>
-        </div>
-        <div class="sub color-bg-sub" :class="{invisibleSub: havePlayerYt}">
-            {{ content.title }}
-        </div>
+                <div :id="playerVideo"></div>
+            </div>
+            <div class="sub color-bg-sub sub-extras" :class="{invisibleSub: havePlayerYt}">
+                {{ content.title }}
+            </div>
         </div>
     </transition>
 </template>
 
 <script>
-    import { mixinEltWithoutChild } from "../../mixins/mixinEltWithoutChild";
-    import { myExtraState } from "../../states/myExtraState";
+    import {mixinEltWithoutChild} from "../../mixins/mixinEltWithoutChild";
     import {mixinCreayeYoutubeIframe} from "../../mixins/mixinCreayeYoutubeIframe";
 
     export default {
         props: ['content'],
         data() {
-          return {
-            timeOut: null,
-            havePlayerYt: false,
-            subtitle: this.content.title,
-            videoId: null,
-            state: null,
-            playerVideo: null
-          }
+            return {
+                timeOut: null,
+                havePlayerYt: false,
+                subtitle: this.content.title,
+                videoId: null,
+                state: null,
+                playerVideo: null
+            }
         },
         mixins: [mixinEltWithoutChild, mixinCreayeYoutubeIframe],
         created() {
-            this.playerVideo = "player"+this.content._id
+            this.playerVideo = "player" + this.content._id
         },
-        methods:{
-        },
+        methods: {},
         computed: {
             style() {
-                return 'background-image: url('+ this.content.img + ')';
+                return 'background-image: url(' + this.content.img + ')';
             }
         },
-        mounted(){
+        mounted() {
 
         }
     };
@@ -61,30 +59,30 @@
             background-position: center;
         }
         .playBo {
-          position:absolute;
-          width:100%;
-          height:100%;
-          left:0;
-          top:0;
-          background-color: black;
-          background-position-x: 85%;
-          animation: fadeplayer 1s ease-in;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: black;
+            background-position-x: 85%;
+            animation: fadeplayer 1s ease-in;
         }
         .sub {
             height: 7%;
         }
         .invisibleSub {
-          display: none;
+            display: none;
         }
     }
 
     @keyframes fadeplayer {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity:1;
-      }
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
 
     .defile {
@@ -102,4 +100,9 @@
         }
     }
 
+    .sub-extras {
+        position: relative;
+        top: -7px;
+        height: 20px !important;
+    }
 </style>

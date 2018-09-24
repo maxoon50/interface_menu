@@ -1,7 +1,7 @@
 export const mixinCreayeYoutubeIframe = {
     data: function () {
         return {
-            havePlayerYt: false,            
+            havePlayerYt: false,
             videoId: null,
             state: null,
             playerVideo: null
@@ -22,7 +22,7 @@ export const mixinCreayeYoutubeIframe = {
                 'showinfo': 0
               },
               events: {
-                'onReady': this.playVideoOnDelay, 
+                'onReady': this.playVideoOnDelay,
                 'onStateChange': this.videoPlayPause
               }
             });
@@ -45,7 +45,8 @@ export const mixinCreayeYoutubeIframe = {
             this.player.destroy();
           },
           listener(eventPlayer) {
-            switch(eventPlayer.keyCode) {               
+
+            switch(eventPlayer.keyCode) {
               case 32:
                 if (this.state == 1){
                   this.player.pauseVideo();
@@ -75,7 +76,7 @@ export const mixinCreayeYoutubeIframe = {
             console.log(this.videoId)
             this.initListenersYt();
             this.timeOut = setTimeout(()=>{
-                this.onYouTubeIframeAPIReady(this.videoId);       
+                this.onYouTubeIframeAPIReady(this.videoId);
             }, 2000);
             this.subtitle = this.content.sub;
           },

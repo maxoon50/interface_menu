@@ -72,7 +72,7 @@ class RestResource {
                             img: res.items[0].snippet.thumbnails.high.url,
                             title: res.items[0].snippet.title
                         }
-                    )
+                    );
                     return STORE.extraContents; 
                 })
         }
