@@ -15,6 +15,7 @@
             >
             </component>
         </transition-group>
+        <img src="/imgs/arrowDown.png" alt="" class="arrow">
     </div>
 </template>
 
@@ -181,6 +182,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+      //  position: relative;
     }
 
     .cont-animation {
@@ -196,6 +198,12 @@
         .full-height;
         .full-width;
         overflow: hidden;
+    }
+
+    .arrow{
+        position: absolute;
+        bottom: -13px;
+        height: 10px;
     }
 
 </style>
