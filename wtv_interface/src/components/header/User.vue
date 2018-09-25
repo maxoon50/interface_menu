@@ -10,7 +10,7 @@
                 />
             </div>
 
-            <img src="/imgs/logoUser.png" alt="logo user">
+            <img src="/imgs/logoUser2.png" alt="logo user">
 
 
         </div>

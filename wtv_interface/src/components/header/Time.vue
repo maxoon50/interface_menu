@@ -53,5 +53,6 @@
     .date{
         margin: 0px;
         color: rgb(26, 159, 220);
+        font-weight: bold;
     }
 </style>
