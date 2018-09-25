@@ -3,7 +3,7 @@
      <!--   <div class="extra" :class="{focusborder: focused}">
             <div class="view" :style="style" :class="{playBo: havePlayerYt}">
                 <div :id="playerVideo"></div>-->
-        <div class="trans extra" :class="{focusborder: focused}">
+        <div class="trans extra" id="cont-extra" :class="{focusborder: focused}">
             <div class="view" :style="style" :class="{playBo: havePlayerYt}">
                <div :id="playerVideo"></div>
             </div>
@@ -70,6 +70,7 @@
             background-color: black;
             background-position-x: 85%;
             animation: fadeplayer 1s ease-in;
+            z-index: 200;
         }
         .sub {
             height: 7%;
@@ -107,5 +108,8 @@
         position: relative;
         top: -7px;
         height: 20px !important;
+    }
+    #cont-extra{
+        z-index: 200;
     }
 </style>
